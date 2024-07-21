@@ -7,6 +7,7 @@ import {
   SiVercel,
   SiNetlify,
 } from "react-icons/si";
+import { DiGit } from "react-icons/di";
 import "./Toolstack.css";
 
 const Toolstack = () => {
@@ -31,6 +32,10 @@ const Toolstack = () => {
       <Col xs={4} md={2} className="tech-icons">
         <SiCloudflare className="icon" />
         <div className="label">Cloudflare</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <DiGit className="icon" />
+        <div className="label">Git Tools</div>
       </Col>
     </Row>
   );

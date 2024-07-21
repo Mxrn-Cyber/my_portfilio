@@ -1,12 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import {
-  DiJavascript1,
-  DiReact,
-  DiNodejs,
-  DiGit,
-  DiPython,
-} from "react-icons/di";
+import { DiJavascript1, DiReact, DiNodejs, DiPython } from "react-icons/di";
 import {
   SiHtml5,
   SiCss3,
@@ -79,10 +73,6 @@ const Techstack = () => {
       <Col xs={4} md={2} className="tech-icons">
         <DiPython className="icon" />
         <div className="label">Python</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiGit className="icon" />
-        <div className="label">Git Tools</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <SiVercel className="icon" />
