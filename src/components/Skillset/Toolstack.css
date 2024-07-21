@@ -1,0 +1,27 @@
+.tech-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px; /* Reduced padding */
+  margin: 10px; /* Reduced margin */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.icon {
+  font-size: 36px; /* Slightly smaller font size */
+  color: #f0f0f0; /* Light white color for icons */
+}
+
+.label {
+  font-size: 14px;
+  color: #f0f0f0;
+  margin-top: 5px;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.tech-icons:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,34 @@
+.techIcons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px; /* Matching padding from Toolstack */
+  margin: 10px; /* Matching margin from Toolstack */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.icon {
+  font-size: 36px; /* Matching font size from Toolstack */
+  color: #f0f0f0; /* Light white color for icons */
+  transition: color 1.05s ease; /* Smooth transition for color change */
+}
+
+.label {
+  font-size: 14px; /* Matching font size from Toolstack */
+  color: #f0f0f0; /* Light white color for labels */
+  margin-top: 5px; /* Matching margin from Toolstack */
+  text-transform: capitalize;
+  text-align: center; /* Center align the text */
+  transition: color 1.05s ease; /* Smooth transition for color change */
+}
+
+.techIcons:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.techIcons:hover .icon,
+.techIcons:hover .label {
+  color: #ffffff;
+}
