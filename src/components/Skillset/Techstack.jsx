@@ -12,6 +12,7 @@ import {
   SiGraphql,
   SiPostman,
   SiVercel,
+  SiFastapi,
 } from "react-icons/si";
 import { FaFlask } from "react-icons/fa";
 
@@ -40,7 +41,7 @@ const Techstack = () => {
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <DiReact className="icon" />
-        <div className="label">React</div>
+        <div className="label">ReactJS</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <SiPhp className="icon" />
@@ -68,7 +69,7 @@ const Techstack = () => {
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <FaFlask className="icon" />
-        <div className="label">Flask</div>
+        <div className="label">FlaskAPI</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <DiPython className="icon" />
@@ -85,6 +86,10 @@ const Techstack = () => {
       <Col xs={4} md={2} className="tech-icons">
         <div className="icon">C++</div>
         <div className="label">C++</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiFastapi className="icon" />
+        <div className="label">FastAPI</div>
       </Col>
     </Row>
   );

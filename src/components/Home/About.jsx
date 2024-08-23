@@ -4,7 +4,7 @@ import LaptopImg from "../../assets/home-main.svg";
 import Tilt from "react-parallax-tilt";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
-import { SiFacebook, SiLeetcode } from "react-icons/si";
+import { SiFacebook } from "react-icons/si";
 
 const About = () => {
   return (
@@ -105,7 +105,7 @@ const About = () => {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://www.facebook.com/morn.poseidon"
+                  href="https://www.facebook.com/morn.scripter/"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"

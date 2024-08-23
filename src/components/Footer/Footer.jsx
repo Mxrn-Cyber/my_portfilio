@@ -3,7 +3,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { SiFacebook } from "react-icons/si";
-import logo from "../../assets/sLogo.png";
 
 const Footer = () => {
   let date = new Date();
@@ -16,7 +15,6 @@ const Footer = () => {
         </Col>
         <Col md="4" className="footer-copywright">
           <span>Copyright © {year}</span>
-          <img src={logo} className="img-fluid logo" alt="brand" />
         </Col>
         <Col md="4" className="footer-body">
           <ul className="footer-icons">
