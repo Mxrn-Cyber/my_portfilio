@@ -16,7 +16,6 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Preloader from "./components/PreLoader";
 import ScrollToTop from "./components/ScrollToTop";
-
 import "./App.css";
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -41,7 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/skillset" element={<Skill />} />
-          {/* <Route path="/project" element={<Project />} /> */}
+          <Route path="/project" element={<Project />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" />} />

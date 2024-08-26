@@ -1,89 +1,95 @@
-// import React from "react";
-// import { Container, Row, Col } from "react-bootstrap";
-// import ProjectCard from "../components/Projects/ProjectCard";
-// import Particle from "../components/Particle";
-// import pg from "../assets/projects/pg.png";
-// import project from "../assets/projects/project.jpeg";
-// import lift from "../assets/projects/lift.png";
-// import krypto from "../assets/projects/krypto.png";
-// import kickstart from "../assets/projects/kickstart.png";
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import ProjectCard from "../components/Projects/ProjectCard";
+import Particle from "../components/Particle";
+import pg from "../assets/projects/pg.png";
+import project from "../assets/projects/project.png";
+import lift from "../assets/projects/lift.png";
+import krypto from "../assets/projects/krypto.png";
+import kickstart from "../assets/projects/kickstart.png";
+import first from "../assets/projects/first.png";
+const Projects = () => {
+  return (
+    <Container fluid className="project-section">
+      <Particle />
+      <Container>
+        <h1 className="project-heading">
+          Recent Top <strong className="yellow">Works </strong>
+        </h1>
+        <p style={{ color: "white" }}>
+          Here are a few projects I've worked on recently.
+        </p>
+        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={lift}
+              isBlog={false}
+              title="TheWalk "
+              description="Thewalk is the project i build it at Semester once in Y3 the is the website where the user can buying shoes by online such as other ecommerce website."
+              ghLink="https://github.com/Mxrn-Cyber/the_walk_project"
+              demoLink="https://project-krypto.netlify.app/"
+            />
+          </Col>
 
-// const Projects = () => {
-//   return (
-//     <Container fluid className="project-section">
-//       <Particle />
-//       <Container>
-//         <h1 className="project-heading">
-//           Recent Top <strong className="yellow">Works </strong>
-//         </h1>
-//         <p style={{ color: "white" }}>
-//           Here are a few projects I've worked on recently.
-//         </p>
-//         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-//           <Col md={4} className="project-card">
-//             <ProjectCard
-//               imgPath={lift}
-//               isBlog={false}
-//               title="Lift-Buddy"
-//               description="This online ride-sharing platform boasts a responsive front-end design, complete with an admin panel built using React and Material-UI. With the integration of Google Maps API, users can easily access directions on the map. The platform allows for full CURD functionality on profiles and posts, and users can confirm or cancel a ride from a post and message each other after confirmation. Additionally, users can easily reset their password. The back-end is powered by a Node Express server and utilizes MongoDB for the database management."
-//               ghLink="https://github.com/19sajib/lift-buddy"
-//             />
-//           </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={project}
+              isBlog={false}
+              title="Blogger Website Blogs"
+              description="This is the project i do from first to uplaod any assingment to Prof. I used to blogger to build it."
+              demoLink="https://mornposeidon.blogspot.com/"
+            />
+          </Col>
 
-//           <Col md={4} className="project-card">
-//             <ProjectCard
-//               imgPath={project}
-//               isBlog={false}
-//               title="Social Media"
-//               description="This platform features a responsive interface built with Reactjs and CSS, allowing users to easily manage their profiles and posts through CRUD activities. The option to follow other users and interact with their posts (like or dislike) is also available, with suggestions for new users to follow. Users can only view posts from their followed users and can only engage in chat with those they follow. The backend is powered by Nodejs and Expressjs server, while MongoDB is utilized as the database."
-//               ghLink="https://github.com/19sajib/social-media"
-//             />
-//           </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={kickstart}
+              isBlog={false}
+              title="Fast API Project"
+              description="FastAPI is the PP from Y2 i used to do it with my project Prof."
+              ghLink="https://github.com/Mxrn-Cyber/Api_Project_Python"
+            />
+          </Col>
 
-//           <Col md={4} className="project-card">
-//             <ProjectCard
-//               imgPath={kickstart}
-//               isBlog={false}
-//               title="E‑Commerce Website"
-//               description="This ecommerce website utilizes a REST API built with Nodejs and Expressjs, allowing for easy CRUD operations on user profiles, products and admin panel. The user interface is designed for efficient product management and includes a complete purchase process. The admin panel, accessible for CRUD on users and products, includes a chart for statistics display. Stripe API is integrated to handle customer payments. The website uses MongoDB and Firebase as the database."
-//               ghLink="https://github.com/19sajib/mern-stack-ecommerce"
-//             />
-//           </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={pg}
+              isBlog={false}
+              title="Meakutes Khmer"
+              description="Meakutes Khmer is the Website where user can seeking the places to visit in Cambodia this web haven't complete yet i just done UX/UI, and I plan to complete in the last of the Semester"
+              demoLink="https://www.figma.com/design/c86lTcKw6XONsrfZHmBxIB/Meakutes(Khmer)?node-id=4-61&t=vGXXttvyhyCYR2Bk-1"
+            />
+          </Col>
 
-//           <Col md={4} className="project-card">
-//             <ProjectCard
-//               imgPath={pg}
-//               isBlog={false}
-//               title="Blog Website"
-//               description="This blogging application features a RESTful API server built with Nodejs and Expressjs. The data is retrieved from the API server and displayed on a user-friendly interface designed using React, Redux, and styled-components for a seamless experience."
-//               ghLink="https://github.com/19sajib/mern-blog-app"
-//             />
-//           </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={krypto}
+              isBlog={false}
+              title="The Walk Figma User Interface concept first versoin"
+              description="Project The walk is my the project from S1 Y3 at ITE. I have four member in team but it's walk to intergrate i change my plan to headling it alone."
+              // ghLink="https://github.com/19sajib/Project-Krypto-Web-3.0"
+              demoLink="https://www.figma.com/design/8sfSa8wJgjIhjqtbtAlDKk/The-Walk-Ver2-Website.-(Community)?node-id=159-20&t=3ji17qqJeKWBEgRH-1"
+            />
+          </Col>
 
-//           <Col md={4} className="project-card">
-//             <ProjectCard
-//               imgPath={krypto}
-//               isBlog={false}
-//               title="Project Krypto"
-//               description="Project Krypto is a Web 3 project that utilizes an Ethereum smart contract created using Solidity. It allows users to interact with their Metamask wallet and send Ethereum."
-//               ghLink="https://github.com/19sajib/Project-Krypto-Web-3.0"
-//               demoLink="https://project-krypto.netlify.app/"
-//             />
-//           </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={first}
+              isBlog={false}
+              title="My First UX/UI Desgin"
+              description="The Project figma first i used to learn from figma."
+              // ghLink="https://github.com/19sajib/Solidity-Kickstart"
+              demoLink="https://www.figma.com/design/8sfSa8https://www.figma.com/design/eMJmYXf96sOn1TwIiB6PN0/my_love_project?node-id=0-1&t=nZJ6kK27m6BQejID-1wJgjIhjqtbtAlDKk/The-Walk-Ver2-Website.-(Community)?node-id=159-20&t=3ji17qqJeKWBEgRH-1"
+            />
+          </Col>
+        </Row>
+        <p style={{ color: "white" }}>
+          To seaking more of my work please kindly watch out my Github or any
+          socail media of mind.Thank you.
+        </p>
+      </Container>
+    </Container>
+  );
+};
 
-//           <Col md={4} className="project-card">
-//             <ProjectCard
-//               imgPath={kickstart}
-//               isBlog={false}
-//               title="Solidity Kickstart"
-//               description="Solidity Kickstart is a Web 3 project that utilizes an Ethereum smart contract created using Solidity. It includes all the functionality of a kickstart platform, enabling users to interact with their Metamask wallet, transfer Ethereum and participate in kickstart campaigns."
-//               ghLink="https://github.com/19sajib/Solidity-Kickstart"
-//             />
-//           </Col>
-//         </Row>
-//       </Container>
-//     </Container>
-//   )
-// }
-
-// export default Projects
+export default Projects;
