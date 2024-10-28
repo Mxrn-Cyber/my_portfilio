@@ -31,57 +31,48 @@ const ProjectCard = (props) => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          alignContent: "space-between",
+          alignItems: "center",
         }}
       >
         <Card.Title>{props.title}</Card.Title>
-        <Card.Text style={{ textAlign: "justify",fontSize:"15px" }}>
+        <Card.Text style={{ textAlign: "justify", fontSize: "15px" }}>
           {props.description}
         </Card.Text>
-        <Button
-          variant="primary"
-          href={props.ghLink}
-          target="_blank"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            alignContent: "flex-end",
-            textAlign: "center",
-            position: "relative",
-            bottom: "0px",
-          }}
-        >
-          <BsGithub /> &nbsp;
-          {props.isBlog ? "Blog" : "GitHub"}
-        </Button>
-        {"\n"}
-        {"\n"}
 
-        {/* If the component contains Demo link and if it's not a Blog then, it will render the below component  */}
-
-        {!props.isBlog && props.demoLink && (
-          <Button
-            variant="primary"
-            href={props.demoLink}
-            target="_blank"
-            style={{
-              marginTop: "10px",
-              display: "flex",
-              justifyContent: "center",
-              alignContent: "flex-end",
-              alignItems: "center",
-              textAlign: "center",
-              position: "static",
-              bottom: "0px",
-            }}
-          >
-            <CgWebsite /> &nbsp;
-            {"Demo"}
-          </Button>
-        )}
+        {/* Conditionally render GitHub and/or Demo buttons based on available links */}
+        <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+          {props.ghLink && (
+            <Button
+              variant="primary"
+              href={props.ghLink}
+              target="_blank"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <BsGithub /> &nbsp; GitHub
+            </Button>
+          )}
+          {props.demoLink && (
+            <Button
+              variant="primary"
+              href={props.demoLink}
+              target="_blank"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <CgWebsite /> &nbsp; Demo
+            </Button>
+          )}
+        </div>
       </Card.Body>
     </Card>
   );
 };
+
 export default ProjectCard;
