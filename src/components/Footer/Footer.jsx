@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { SiFacebook } from "react-icons/si";
-
+import { FaTiktok } from "react-icons/fa";
 const Footer = () => {
   let date = new Date();
   let year = date.getFullYear();
@@ -60,6 +60,17 @@ const Footer = () => {
                 aria-label="leetcode"
               >
                 <SiFacebook />
+              </a>
+            </li>
+            <li className="social-icons">
+              <a
+                href="https://www.tiktok.com/@cybermorn?_t=8pGtG1tzu12&_r=1"
+                style={{ color: "white" }}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="leetcode"
+              >
+                <FaTiktok />
               </a>
             </li>
           </ul>

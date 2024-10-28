@@ -8,6 +8,8 @@ import lift from "../assets/projects/lift.png";
 import krypto from "../assets/projects/krypto.png";
 import kickstart from "../assets/projects/kickstart.png";
 import first from "../assets/projects/first.png";
+import teacher from "../assets/projects/teacher.png";
+import car from "../assets/projects/car.png";
 const Projects = () => {
   return (
     <Container fluid className="project-section">
@@ -25,9 +27,9 @@ const Projects = () => {
               imgPath={lift}
               isBlog={false}
               title="TheWalk "
-              description="Thewalk is the project i build it at Semester once in Y3 the is the website where the user can buying shoes by online such as other ecommerce website."
+              description="TheWalk project you built during your first semester in Year 3 is an e-commerce website where users can buy shoes online, similar to other e-commerce platforms. If you need help with any features, improvements, or have questions about the project, I'm here to assist!"
               ghLink="https://github.com/Mxrn-Cyber/the_walk_project"
-              demoLink="https://project-krypto.netlify.app/"
+              demoLink="https://shoestore-bzk.pages.dev/"
             />
           </Col>
 
@@ -79,7 +81,25 @@ const Projects = () => {
               title="My First UX/UI Desgin"
               description="The Project figma first i used to learn from figma."
               // ghLink="https://github.com/19sajib/Solidity-Kickstart"
-              demoLink="https://www.figma.com/design/8sfSa8https://www.figma.com/design/eMJmYXf96sOn1TwIiB6PN0/my_love_project?node-id=0-1&t=nZJ6kK27m6BQejID-1wJgjIhjqtbtAlDKk/The-Walk-Ver2-Website.-(Community)?node-id=159-20&t=3ji17qqJeKWBEgRH-1"
+              demoLink="https://www.figma.com/design/eMJmYXf96sOn1TwIiB6PN0/my_love_project?node-id=0-1&t=RCpAwKfiasjTnSUM-1"
+            />
+          </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={teacher}
+              isBlog={false}
+              title="Teacher assistance"
+              description="Teacher assistance is the web platform i used to build it with my team for 5 member by usage vuejs, intergrate Laravel Framework Kindly Check it out too"
+              ghLink="https://github.com/19sajib/Solidity-Kickstart"
+            />
+          </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={car}
+              isBlog={false}
+              title="Car3D Game"
+              description="Source from overseas"
+              ghLink="https://github.com/Mxrn-Cyber/-CarGame-main.cpp"
             />
           </Col>
         </Row>
