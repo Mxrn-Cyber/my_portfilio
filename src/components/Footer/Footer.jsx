@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { SiFacebook } from "react-icons/si";
+import { FaFigma } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa";
 const Footer = () => {
   let date = new Date();
@@ -71,6 +72,17 @@ const Footer = () => {
                 aria-label="leetcode"
               >
                 <FaTiktok />
+              </a>
+            </li>
+            <li className="social-icons">
+              <a
+                href="https://www.figma.com/@CyberMorn"
+                style={{ color: "white" }}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="leetcode"
+              >
+                <FaFigma />
               </a>
             </li>
           </ul>

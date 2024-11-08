@@ -60,7 +60,7 @@ const Projects = () => {
               isBlog={false}
               title="Meakutes Khmer"
               description="Meakutes Khmer is the Website where user can seeking the places to visit in Cambodia this web haven't complete yet i just done UX/UI, and I plan to complete in the last of the Semester"
-              demoLink="https://www.figma.com/design/c86lTcKw6XONsrfZHmBxIB/Meakutes(Khmer)?node-id=4-61&t=vGXXttvyhyCYR2Bk-1"
+              demoLink="https://www.figma.com/design/c86lTcKw6XONsrfZHmBxIB/Meakutes(Khmer)?node-id=4-61&t=LMPh3Y7tT4KDcFbM-1"
             />
           </Col>
 
@@ -71,7 +71,7 @@ const Projects = () => {
               title="The Walk Figma User Interface concept first versoin"
               description="Project The walk is my the project from S1 Y3 at ITE. I have four member in team but it's walk to intergrate i change my plan to headling it alone."
               // ghLink="https://github.com/19sajib/Project-Krypto-Web-3.0"
-              demoLink="https://www.figma.com/design/8sfSa8wJgjIhjqtbtAlDKk/The-Walk-Ver2-Website.-(Community)?node-id=159-20&t=3ji17qqJeKWBEgRH-1"
+              demoLink="https://www.figma.com/design/OcAIxguEcK9g7Yx3q3K57E/The-Walk(Shoes-Store)?node-id=0-1&t=zVQFMXAcyCXdf8g3-1"
             />
           </Col>
 
@@ -82,7 +82,7 @@ const Projects = () => {
               title="My First UX/UI Desgin"
               description="The Project figma first i used to learn from figma."
               // ghLink="https://github.com/19sajib/Solidity-Kickstart"
-              demoLink="https://www.figma.com/design/eMJmYXf96sOn1TwIiB6PN0/my_love_project?node-id=0-1&t=RCpAwKfiasjTnSUM-1"
+              demoLink="https://www.figma.com/design/eMJmYXf96sOn1TwIiB6PN0/my_love_project?node-id=0-1&t=te8iIsi2n3GiSmHQ-1"
             />
           </Col>
           <Col md={4} className="project-card">
