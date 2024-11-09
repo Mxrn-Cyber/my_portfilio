@@ -12,7 +12,7 @@ const Footer = () => {
     <Container fluid className="footer">
       <Row>
         <Col md="4" className="footer-copywright">
-          <span>Dedicated to creating impactful solutions!</span>
+          <span>Department Information Technology and Engineering</span>
         </Col>
         <Col md="4" className="footer-copywright">
           <span>Copyright © {year}</span>
@@ -54,7 +54,7 @@ const Footer = () => {
             </li>
             <li className="social-icons">
               <a
-                href="https://www.facebook.com/morn.poseidon"
+                href="https://www.facebook.com/morn.scripter"
                 style={{ color: "white" }}
                 target="_blank"
                 rel="noopener noreferrer"

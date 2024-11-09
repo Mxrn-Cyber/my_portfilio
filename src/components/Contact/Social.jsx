@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { SiFacebook } from "react-icons/si";
-import { FaFigma } from "react-icons/fa6";
+import { FaFigma, FaTiktok } from "react-icons/fa6";
 import "./Social.css";
 
 const Social = () => {
@@ -51,7 +51,7 @@ const Social = () => {
             </li>
             <li className="contact-icons">
               <a
-                href="https://www.facebook.com/morn.poseidon"
+                href="https://www.facebook.com/morn.scripter"
                 target="_blank"
                 rel="noreferrer"
                 className="icon-color contact-social-icons"
@@ -61,7 +61,17 @@ const Social = () => {
             </li>
             <li className="contact-icons">
               <a
-                href="ttps://www.figma.com/@CyberMorn"
+                href="https://www.tiktok.com/@cybermorn?_t=8pGtG1tzu12&_r=1"
+                target="_blank"
+                rel="noreferrer"
+                className="icon-color contact-social-icons"
+              >
+                <FaTiktok />
+              </a>
+            </li>
+            <li className="contact-icons">
+              <a
+                href="https://www.figma.com/@CyberMorn"
                 target="_blank"
                 rel="noreferrer"
                 className="icon-color contact-social-icons"

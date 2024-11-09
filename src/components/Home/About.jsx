@@ -4,6 +4,7 @@ import LaptopImg from "../../assets/home-main.svg";
 import Tilt from "react-parallax-tilt";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
+import { FaFigma, FaTiktok } from "react-icons/fa6";
 import { SiFacebook } from "react-icons/si";
 
 const About = () => {
@@ -112,6 +113,28 @@ const About = () => {
                   aria-label="instagram"
                 >
                   <SiFacebook />
+                </a>
+              </li>
+              <li className="social-icons">
+                <a
+                  href="https://www.tiktok.com/@cybermorn?_t=8pGtG1tzu12&_r=1"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="icon-colour home-social-icons"
+                  aria-label="instagram"
+                >
+                  <FaTiktok />
+                </a>
+              </li>
+              <li className="social-icons">
+                <a
+                  href="https://www.figma.com/@CyberMorn"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="icon-colour home-social-icons"
+                  aria-label="instagram"
+                >
+                  <FaFigma />
                 </a>
               </li>
             </ul>
