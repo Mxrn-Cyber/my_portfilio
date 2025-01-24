@@ -9,14 +9,19 @@ import { SiFacebook } from "react-icons/si";
 
 const About = () => {
   return (
-    <Container fluid className="home-about-section" id="about">
+    <Container
+      fluid
+      className="home-about-section"
+      id="about"
+      style={{ backgroundColor: "#ffffff", color: "#000000" }}
+    >
       <Container>
         <Row>
           <Col md={8} className="home-about-description">
-            <h1 style={{ fontSize: "2.6em" }}>
+            <h1 style={{ fontSize: "2.6em", color: "#000000" }}>
               LET ME <span className="yellow"> INTRODUCE </span> MYSELF
             </h1>
-            <p className="home-about-body">
+            <p className="home-about-body" style={{ color: "#000000" }}>
               Hi, my name is <span className="yellow">Lao Thomorn </span>
               and I'm from <span className="yellow">Phnom Penh, Cambodia </span>
               <br />
@@ -65,8 +70,8 @@ const About = () => {
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
-            <h1>FIND ME ON</h1>
-            <p>
+            <h1 style={{ color: "#000000" }}>FIND ME ON</h1>
+            <p style={{ color: "#000000" }}>
               Please don't hesitate to reach out to me and{" "}
               <span className="yellow">connect.</span>
             </p>
@@ -110,7 +115,7 @@ const About = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"
-                  aria-label="instagram"
+                  aria-label="facebook"
                 >
                   <SiFacebook />
                 </a>
@@ -121,7 +126,7 @@ const About = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"
-                  aria-label="instagram"
+                  aria-label="tiktok"
                 >
                   <FaTiktok />
                 </a>
@@ -132,7 +137,7 @@ const About = () => {
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"
-                  aria-label="instagram"
+                  aria-label="figma"
                 >
                   <FaFigma />
                 </a>

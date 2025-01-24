@@ -10,12 +10,12 @@
 
 .icon {
   font-size: 36px; /* Slightly smaller font size */
-  color: #f0f0f0; /* Light white color for icons */
+  color: #000000; /* Light white color for icons */
 }
 
 .label {
   font-size: 14px;
-  color: #f0f0f0;
+  color: #000000;
   margin-top: 5px;
   text-transform: capitalize;
   text-align: center;

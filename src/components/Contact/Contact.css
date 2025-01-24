@@ -1,80 +1,84 @@
-.contact-form{
-    padding: 0 3rem 0 3rem;
-    display: flex;
-    height: 80vh;
-    margin-top: 4rem;
-      /* scroll */
-  padding-top: 3rem;
+.contact-form {
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
 }
 
-.c-left{
-    text-align: center !important;
-    padding-top: 25px;
-    color: white !important;
+@media (max-width: 768px) {
+  .contact-form {
+    margin-top: 12rem; /* Move down by 20% of the viewport height */
+    padding: 15rem; /* Adjust padding if needed for smaller screens */
+  }
 }
 
-.c-right{
-    display: flex;
-    justify-content: center;
-    position: relative;
-    flex: 1;
+.c-left {
+  text-align: center !important;
+  padding-top: 15rem;
+  color: rgb(0, 0, 0) !important;
 }
 
-.c-right>form
-{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    
+.c-right {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding-top: 12rem;
+  flex: 1;
 }
 
-.c-right .user{
-    width: 24rem;
-    height: 3rem;
-    padding: 0.3em;
-    outline: none;
-    border: 2px solid #40008a;
-    border-radius: 8px;
-    font-size: 19px;
-    color: white   
+.c-right > form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
 }
 
-.c-right .user:hover{
-    box-shadow: 0 0 9px #7500fa;
+.c-right .user {
+  width: 24rem;
+  height: 3rem;
+  padding: 0.3em;
+  outline: none;
+  border: 2px solid #454545;
+  border-radius: 8px;
+  font-size: 19px;
+  color: rgb(0, 0, 0);
 }
 
-input{
-    background-color: var(--purple)
-}
-textarea{
-    height: 5rem!important;
-    background-color: var(--purple)
+.c-right .user:hover {
+  box-shadow: 0 0 9px #4a4a4a;
 }
 
-.done{
-    font-size: 19px;
-    color: green;
+input {
+  background-color: var(--#4a4a4a);
 }
-.not-done{
-    font-size: 19px;
-    color: red;
+textarea {
+  height: 5rem !important;
+  background-color: var(--#4a4a4a);
 }
 
-.c-blur1{
-    top: 1rem;
-    left: 8rem;
+.done {
+  font-size: 19px;
+  color: rgb(0, 101, 0);
+}
+.not-done {
+  font-size: 19px;
+  color: red;
+}
+
+.c-blur1 {
+  top: 1rem;
+  left: 8rem;
 }
 
 @media screen and (max-width: 480px) {
-    .contact-form{
-        padding: 0;
-        flex-direction: column;
-        gap: 5rem;
-        height: 40rem;
-    }
-    .c-right .user{
-        width: 16rem;
-    }
-
+  .contact-form {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0;
+    gap: 5rem;
+    height: auto; /* Adjust height for smaller screens */
+    margin-top: 100rem; /* Add some margin from the top */
+  }
+  .c-right .user {
+    width: 16rem;
+  }
 }

@@ -8,7 +8,7 @@ import "./Social.css";
 
 const Social = () => {
   return (
-    <Container style={{ padding: "30px" }}>
+    <Container className="social-container">
       <Row>
         <Col md={12} className="contact-social">
           <div className="contact-text">
@@ -24,7 +24,7 @@ const Social = () => {
                 href="https://github.com/Mxrn-Cyber"
                 target="_blank"
                 rel="noreferrer"
-                className="icon-color  contact-social-icons"
+                className="icon-color contact-social-icons"
               >
                 <AiFillGithub />
               </a>
@@ -34,7 +34,7 @@ const Social = () => {
                 href="https://x.com/cybermorn"
                 target="_blank"
                 rel="noreferrer"
-                className="icon-color  contact-social-icons"
+                className="icon-color contact-social-icons"
               >
                 <AiOutlineTwitter />
               </a>
@@ -44,7 +44,7 @@ const Social = () => {
                 href="https://www.linkedin.com/in/lao-thomorn-347a4b28b/"
                 target="_blank"
                 rel="noreferrer"
-                className="icon-color  contact-social-icons"
+                className="icon-color contact-social-icons"
               >
                 <FaLinkedinIn />
               </a>
