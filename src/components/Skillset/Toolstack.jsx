@@ -6,6 +6,13 @@ import {
   SiCloudflare,
   SiVercel,
   SiNetlify,
+  SiAndroidstudio,
+  SiFigma,
+  SiIntellijidea,
+  SiPycharm,
+  SiUnity,
+  SiMamp,
+  SiDocker,
 } from "react-icons/si";
 import { DiGit } from "react-icons/di";
 import "./Toolstack.css";
@@ -36,6 +43,34 @@ const Toolstack = () => {
       <Col xs={4} md={2} className="tech-icons">
         <DiGit className="icon" />
         <div className="label">Git Tools</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiAndroidstudio className="icon" />
+        <div className="label">Andriod Studios</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiFigma className="icon" />
+        <div className="label">Figma</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiIntellijidea className="icon" />
+        <div className="label">Intellijidea</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiPycharm className="icon" />
+        <div className="label">Pycharm</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiUnity className="icon" />
+        <div className="label">Unity</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiMamp className="icon" />
+        <div className="label">MAMP</div>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiDocker className="icon" />
+        <div className="label">Docker</div>
       </Col>
     </Row>
   );

@@ -15,6 +15,17 @@ html {
   --imp-bold-text-color: #d51919;
 }
 
+/* Base responsive setup */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 .yellow {
   color: var(--imp-bold-text-color) !important;
 }
@@ -41,6 +52,7 @@ button:focus {
   background-image: url(./assets/pre.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 }
 
 #preloader-none {
@@ -53,32 +65,31 @@ button:focus {
 }
 
 /* --------- */
-/*Scrollbar   */
+/* Scrollbar   */
 /* --------- */
-
 ::-webkit-scrollbar {
   width: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #2d005c;
+  background: #ff0000;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.959);
+  background: rgba(255, 0, 0, 0.959);
   border-radius: 12px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(0, 0, 0);
+  background: rgb(220, 0, 0);
   border-radius: 12px;
 }
 
 /* --------- */
-/* Navbar Section  */
+/* Navbar Section - Fully Responsive */
 /* --------- */
 .sticky {
   background-color: #00000031 !important;
@@ -92,6 +103,31 @@ button:focus {
   transition: all 0.3s ease-out 0s !important;
   padding: 0.3rem 2rem !important;
   font-size: 1.2rem !important;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Responsive navbar padding */
+@media (max-width: 1200px) {
+  .navbar {
+    padding: 0.3rem 1.5rem !important;
+    font-size: 1.1rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 1rem !important;
+    font-size: 1rem !important;
+    background-color: #181a27 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem 0.5rem !important;
+    font-size: 0.9rem !important;
+  }
 }
 
 .navbar-toggler {
@@ -120,7 +156,6 @@ button:focus {
 .navbar-toggler span:nth-child(1),
 .navbar-toggler span:nth-child(3) {
   transition: transform 0.35s ease-in-out !important;
-  transition: transform 0.35s ease-in-out !important;
 }
 
 .navbar-toggler:not(.collapsed) span:nth-child(1) {
@@ -145,16 +180,6 @@ button:focus {
   opacity: 0.9 !important;
 }
 
-@media (max-width: 767px) {
-  .navbar {
-    padding: 1rem 2rem !important;
-    font-size: 1.4rem !important;
-    background-color: #181a27 !important;
-  }
-  .navbar-nav .nav-item a::after {
-    display: none !important;
-  }
-}
 .navbar-brand {
   color: rgb(0, 0, 0) !important;
 }
@@ -162,6 +187,21 @@ button:focus {
 .logo {
   height: 2em !important;
   width: 3.5em !important;
+}
+
+/* Responsive logo */
+@media (max-width: 768px) {
+  .logo {
+    height: 1.8em !important;
+    width: 3em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    height: 1.5em !important;
+    width: 2.5em !important;
+  }
 }
 
 .navbar-nav .nav-link {
@@ -174,15 +214,31 @@ button:focus {
   padding: 0.8rem 1rem !important;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .nav-link {
-    padding: 0.7rem 1rem !important;
+    padding: 0.7rem 0.5rem !important;
+  }
+  .navbar-nav .nav-item a::after {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-link {
+    padding: 0.5rem 0.3rem !important;
+    font-size: 0.9rem !important;
   }
 }
 
 .navbar-nav .nav-item {
   position: relative;
   margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav .nav-item {
+    margin-left: 0;
+  }
 }
 
 .navbar-nav .nav-item a {
@@ -211,13 +267,12 @@ button:focus {
 }
 
 /* --------- */
-/* Home section */
-/* --------- */
+/* Home section - Fully Responsive (Modified) */
 .wave {
-  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
-  animation-duration: 2.1s; /* Change to speed up or slow down */
-  animation-iteration-count: infinite; /* Never stop waving :) */
-  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+  animation-name: wave-animation;
+  animation-duration: 2.1s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
   display: inline-block;
 }
 
@@ -227,7 +282,7 @@ button:focus {
   }
   10% {
     transform: rotate(14deg);
-  } /* The following five values can be played with to make the waving more or less extreme */
+  }
   20% {
     transform: rotate(-8deg);
   }
@@ -242,11 +297,12 @@ button:focus {
   }
   60% {
     transform: rotate(0deg);
-  } /* Reset for the last half to pause */
+  }
   100% {
     transform: rotate(0deg);
   }
 }
+
 #tsparticles {
   position: fixed !important;
   background-repeat: no-repeat !important;
@@ -258,71 +314,433 @@ button:focus {
 .home-header {
   padding-top: 1px !important;
 }
+
+/* Updated Home section for responsive background (Modified) */
 .home-section {
-  position: flex;
+  position: relative;
   z-index: -1;
-  width: 90%;
-  height: 100vh;
-  background-color: white; /* Set the background color to white */
-  background-image: url(./assets/home-bg.png); /* Keep the background image */
-  background-position: center; /* Adjust the position of the image */
+  width: 100%;
+  min-height: 100vh;
+  background-color: white; /* Fallback background color */
+  background-image: url(./assets/home-bg.png);
+  background-position: center center;
   background-repeat: no-repeat;
-  background-size: cover; /* Use cover for better scaling */
+  background-size: cover; /* Ensures the image covers the section */
+  background-attachment: scroll; /* Changed from fixed for mobile compatibility */
+  margin: 0 auto 1.5rem auto; /* Reduced bottom margin from 4rem to 1.5rem */
+  padding: 2rem 1rem 1.5rem 1rem; /* Reduced padding-bottom from 4rem to 1.5rem */
+  box-sizing: border-box;
 }
 
-/* @media (max-width: 768px) {
+/* Responsive home section */
+@media (max-width: 1400px) {
   .home-section {
-    height: 80vh;
-    background-position: top center;
-    background-size: 120%;
+    width: 100%;
+    padding: 2rem 1.5rem 1.5rem 1.5rem; /* Adjusted padding */
+    margin-bottom: 1.5rem; /* Adjusted margin */
+    background-size: cover;
   }
-} */
+}
 
-/* @media (max-width: 480px) {
+@media (max-width: 1200px) {
   .home-section {
-    height: 70vh;
-    background-position: top center;
-    background-size: 130%;
-} */
+    width: 100%;
+    padding: 2rem 1rem 1rem 1rem; /* Adjusted padding */
+    margin-bottom: 1rem; /* Adjusted margin */
+    background-size: cover;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-section {
+    width: 100%;
+    min-height: 80vh; /* Reduced min-height for smaller screens */
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: contain; /* Switch to contain for better scaling */
+    padding: 1.5rem 1rem 1rem 1rem; /* Adjusted padding */
+    margin-bottom: 0.5rem; /* Adjusted margin */
+  }
+}
+
+@media (max-width: 480px) {
+  .home-section {
+    width: 100%;
+    min-height: 70vh; /* Further reduced for small screens */
+    padding: 1rem 0.5rem 0.5rem 0.5rem; /* Adjusted padding */
+    margin-bottom: 0.5rem; /* Adjusted margin */
+    background-position: center center;
+    background-size: contain;
+    background-attachment: scroll;
+  }
+}
 
 .home-content {
-  padding: 9rem 0 2rem !important;
+  padding: 9rem 0 1rem !important; /* Reduced bottom padding from 3rem to 1rem */
   color: rgb(0, 0, 0);
+  text-align: left;
+  margin-bottom: 1rem; /* Reduced margin from 2rem to 1rem */
+}
+
+/* Responsive home content */
+@media (max-width: 1200px) {
+  .home-content {
+    padding: 8rem 0 1rem !important; /* Adjusted padding */
+    margin-bottom: 1rem; /* Adjusted margin */
+  }
+}
+
+@media (max-width: 768px) {
+  .home-content {
+    padding: 6rem 0 0.5rem !important; /* Adjusted padding */
+    text-align: center;
+    margin-bottom: 0.5rem; /* Adjusted margin */
+  }
+}
+
+@media (max-width: 480px) {
+  .home-content {
+    padding: 5rem 0 0.5rem !important; /* Adjusted padding */
+    margin-bottom: 0.5rem; /* Adjusted margin */
+  }
+}
+
+/* --------- */
+/* Improved About section spacing (Modified) */
+.home-about-section {
+  text-align: left;
+  padding: 1rem 0 !important; /* Reduced padding from 70px to 1rem */
+  margin: 0.5rem 0 !important; /* Reduced margin from 3rem to 0.5rem */
+}
+
+@media (max-width: 768px) {
+  .home-about-section {
+    padding: 0.5rem 0 !important; /* Adjusted padding */
+    margin: 0.5rem 0 !important; /* Adjusted margin */
+  }
+}
+
+@media (max-width: 480px) {
+  .home-about-section {
+    padding: 0.5rem 0 !important; /* Adjusted padding */
+    margin: 0rem 0 !important; /* Adjusted margin */
+  }
+}
+
+.home-about-description {
+  color: white !important;
+  padding: 0.5rem 0 1rem 0 !important; /* Reduced padding-top from 100px to 0.5rem */
+  text-align: center;
+  margin-bottom: 1.5rem !important;
+}
+
+@media (max-width: 768px) {
+  .home-about-description {
+    padding: 0.5rem 0 1rem 0 !important; /* Adjusted padding */
+    margin-bottom: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-about-description {
+    padding: 0.5rem 0 0.5rem 0 !important; /* Adjusted padding */
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+.home-about-body {
+  padding-top: 50px;
+  font-size: 1.2em !important;
   text-align: left;
 }
 
-.heading {
-  font-size: 2.4em !important;
-  padding-left: 50px !important;
+@media (max-width: 768px) {
+  .home-about-body {
+    padding-top: 30px;
+    font-size: 1.1em !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-about-body {
+    padding-top: 20px;
+    font-size: 1em !important;
+  }
+}
+
+/* --------- */
+/* Improved About main section spacing */
+.about-section {
+  position: relative !important;
+  /* padding: 6rem 0 4rem 0 !important; */
+  margin: 3rem 0 !important;
+  background-image: var(--section-background-color) !important;
+  color: rgb(0, 0, 0) !important;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    /* padding: 4rem 0 3rem 0 !important; */
+    margin: 2rem 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    /* padding: 3rem 0 2rem 0 !important; */
+    margin: 1.5rem 0 !important;
+  }
+}
+
+/* --------- */
+/* Improved Project section spacing */
+.project-section {
+  position: relative !important;
+  padding: 6rem 0 4rem 0 !important;
+  margin: 3rem 0 !important;
+  background-image: var(--section-background-color) !important;
+}
+
+@media (max-width: 768px) {
+  .project-section {
+    padding: 4rem 0 3rem 0 !important;
+    margin: 2rem 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-section {
+    padding: 3rem 0 2rem 0 !important;
+    margin: 1.5rem 0 !important;
+  }
+}
+
+.project-card {
+  padding: 3rem 1.5rem !important;
+  margin-bottom: 2rem !important;
+  height: auto !important;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    padding: 2rem 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    padding: 1.5rem 0.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* --------- */
+/* Improved Resume section spacing */
+.resume-section {
+  position: relative !important;
+  padding: 6rem 0 4rem 0 !important;
+  margin: 3rem 0 !important;
+  background-image: var(--section-background-color) !important;
+  color: rgb(74, 70, 70) !important;
+}
+
+@media (max-width: 768px) {
+  .resume-section {
+    padding: 4rem 0 3rem 0 !important;
+    margin: 2rem 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-section {
+    padding: 3rem 0 2rem 0 !important;
+    margin: 1.5rem 0 !important;
+  }
+}
+
+.resume {
+  padding: 3rem 0 3rem 0;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .resume {
+    padding: 2rem 0 2rem 0;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume {
+    padding: 1.5rem 0 1.5rem 0;
+    margin-bottom: 1rem;
+  }
+}
+
+/* --------- */
+/* Improved general spacing utilities */
+.container-fluid {
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .container-fluid {
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-fluid {
+    padding-bottom: 1rem;
+  }
+}
+
+/* Ensure proper spacing for rows and columns */
+.row {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .row {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Improved heading spacing */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 1.5rem !important;
+  margin-top: 1rem !important;
+}
+
+@media (max-width: 768px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 1rem !important;
+    margin-top: 0.5rem !important;
+  }
+}
+
+/* Improved paragraph spacing */
+p {
+  margin-bottom: 1.5rem !important;
+}
+
+@media (max-width: 768px) {
+  p {
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Responsive headings */
+@media (max-width: 1200px) {
+  .heading {
+    font-size: 2.2em !important;
+    padding-left: 30px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2em !important;
+    padding-left: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.6em !important;
+    padding-left: 10px !important;
+  }
 }
 
 .heading-name {
-  font-size: 250 px !important;
+  font-size: 2.5em !important;
   padding-left: 40px !important;
+}
+
+/* Responsive heading name */
+@media (max-width: 1200px) {
+  .heading-name {
+    font-size: 2.2em !important;
+    padding-left: 30px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading-name {
+    font-size: 1.8em !important;
+    padding-left: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading-name {
+    font-size: 1.4em !important;
+    padding-left: 10px !important;
+  }
 }
 
 .main-name {
   color: red;
+  text-align: left !important;
 }
 
 .Typewriter__wrapper {
   font-size: 2.2em !important;
   color: red !important;
-  /* color: #be6adf !important; */
   font-weight: 600 !important;
+  text-align: left !important;
 }
+
 .Typewriter__cursor {
   font-size: 2.4em !important;
   color: red !important;
 }
 
-@media (max-width: 767px) {
+/* Responsive typewriter */
+@media (max-width: 1200px) {
+  .Typewriter__wrapper {
+    font-size: 2em !important;
+  }
+  .Typewriter__cursor {
+    font-size: 2.2em !important;
+  }
+}
+
+@media (max-width: 768px) {
   .Typewriter__wrapper {
     font-size: 1.4em !important;
     font-weight: 500 !important;
-    position: absolute !important;
   }
   .Typewriter__cursor {
+    font-size: 1.6em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .Typewriter__wrapper {
+    font-size: 1.2em !important;
+  }
+  .Typewriter__cursor {
+    font-size: 1.4em !important;
     display: none !important;
   }
 }
@@ -332,30 +750,25 @@ button:focus {
   padding-top: 9em !important;
 }
 
-@media (max-width: 767px) {
+/* Responsive avatar */
+@media (max-width: 1200px) {
   .myAvtar {
-    padding-top: 2em !important;
+    padding-top: 7em !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .myAvtar {
+    padding-top: 3em !important;
     padding-bottom: 2em !important;
   }
 }
 
-.home-about-section {
-  position: relative;
-  padding-bottom: 70px !important;
-  padding-top: 70px !important;
-}
-
-.home-about-description {
-  color: white !important;
-  padding-top: 100px !important;
-  padding-bottom: 20px !important;
-  text-align: center;
-}
-
-.home-about-body {
-  padding-top: 50px;
-  font-size: 1.2em !important;
-  text-align: left;
+@media (max-width: 480px) {
+  .myAvtar {
+    padding-top: 2em !important;
+    padding-bottom: 1em !important;
+  }
 }
 
 .home-about-social {
@@ -383,6 +796,15 @@ button:focus {
   background: rgba(0, 0, 0, 0.972) !important;
   border-radius: 50% !important;
   transition: 0.5s !important;
+}
+
+@media (max-width: 480px) {
+  .home-social-icons {
+    width: 35px !important;
+    height: 35px !important;
+    font-size: 1.1em !important;
+    line-height: 1.8em !important;
+  }
 }
 
 .home-social-icons::before {
@@ -416,24 +838,33 @@ button:focus {
   padding-left: 15px;
 }
 
+@media (max-width: 480px) {
+  .social-icons {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
 .icon-colour {
   color: #ffffff !important;
 }
 
 /* --------- */
-/* Footer */
+/* Footer - Responsive */
 /* --------- */
 .footer {
   background-color: rgb(149, 149, 149);
   bottom: 0 !important;
   padding-top: 10px !important;
-  padding-bottom: 8px !important ;
+  padding-bottom: 8px !important;
 }
+
 .footer-copywright {
   display: flex;
   text-align: center !important;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .footer-copywright span {
@@ -441,19 +872,24 @@ button:focus {
   font-size: 1.2rem;
 }
 
+@media (max-width: 768px) {
+  .footer-copywright {
+    flex-direction: column;
+  }
+  .footer-copywright span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-copywright span {
+    font-size: 0.9rem;
+  }
+}
+
 .footer-body {
   z-index: 1;
   text-align: center !important;
-}
-
-@media (max-width: 767px) {
-  .footer-copywright {
-    text-align: center !important;
-  }
-
-  .footer-body {
-    text-align: center !important;
-  }
 }
 
 .footer h3 {
@@ -462,6 +898,7 @@ button:focus {
   margin-top: 0.5em !important;
   margin-bottom: 0.5em !important;
 }
+
 .footer-icons {
   margin-top: 0.5em !important;
   margin-bottom: 0.5em !important;
@@ -471,16 +908,26 @@ button:focus {
 .blockquote-footer {
   color: #000000 !important;
 }
-/* --------- */
-/* About */
-/* --------- */
 
+/* --------- */
+/* About - Responsive */
 .about-section {
   position: relative !important;
-  padding-top: 150px !important;
   padding-bottom: 30px !important;
   background-image: var(--section-background-color) !important;
   color: rgb(0, 0, 0) !important;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding-bottom: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding-bottom: 15px !important;
+  }
 }
 
 .tech-icons {
@@ -498,9 +945,27 @@ button:focus {
   transition: all 0.4s ease 0s !important;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1200px) {
   .tech-icons {
+    font-size: 4em !important;
+    margin: 12px !important;
+    padding: 8px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-icons {
+    font-size: 3.5em !important;
     margin: 10px !important;
+    padding: 6px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-icons {
+    font-size: 3em !important;
+    margin: 8px !important;
+    padding: 5px !important;
   }
 }
 
@@ -509,9 +974,22 @@ button:focus {
   overflow: hidden !important;
   border: 2.2px solid rgb(0, 0, 0) !important;
 }
+
 .tech-icon-images {
   padding: 20px !important;
   line-height: 1.6 !important;
+}
+
+@media (max-width: 768px) {
+  .tech-icon-images {
+    padding: 15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-icon-images {
+    padding: 10px !important;
+  }
 }
 
 .quote-card-view {
@@ -526,20 +1004,33 @@ button:focus {
   padding-left: 1px !important;
 }
 
-@media (max-width: 767px) {
-  .about-img {
-    padding-top: 0 !important;
+@media (max-width: 768px) {
+  .about-activity {
+    text-align: center !important;
   }
 }
 
 /* --------- */
-/* Projects */
-/* --------- */
+/* Projects - Responsive */
 .project-section {
   position: relative !important;
   padding-top: 150px !important;
   padding-bottom: 30px !important;
   background-image: var(--section-background-color) !important;
+}
+
+@media (max-width: 768px) {
+  .project-section {
+    padding-top: 100px !important;
+    padding-bottom: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-section {
+    padding-top: 80px !important;
+    padding-bottom: 15px !important;
+  }
 }
 
 .project-card {
@@ -550,19 +1041,36 @@ button:focus {
   height: auto !important;
 }
 
+@media (max-width: 768px) {
+  .project-card {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
 .project-card-view {
   box-shadow: 0 4px 5px 3px rgb(0, 0, 0) !important;
-  /* box-shadow: 0 4px 5px 3px rgba(119, 53, 136, 0.459) !important; */
   color: rgb(0, 0, 0) !important;
   background-color: transparent !important;
   opacity: 0.9 !important;
   transition: all 0.5s ease 0s !important;
   height: 100% !important;
 }
+
 .project-card-view:hover {
   transform: scale(1.02) !important;
   overflow: hidden !important;
-  /* box-shadow: 0 4px 4px 5px rgba(129, 72, 144, 0.561) !important; */
   box-shadow: 0 4px 5px 3px rgb(255, 255, 255) !important;
 }
 
@@ -572,6 +1080,24 @@ button:focus {
   padding-left: 25px !important;
   padding-right: 25px !important;
   height: auto !important;
+}
+
+@media (max-width: 768px) {
+  .blog-card {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-card {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
 }
 
 .blog-card-view {
@@ -601,34 +1127,47 @@ button:focus {
   padding: 20px !important;
   opacity: 0.8 !important;
   border-radius: 10px !important;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .card-img-top {
+    padding: 15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-img-top {
+    padding: 10px !important;
+  }
 }
 
 .blog-img {
   padding: 0px !important;
   opacity: 0.8 !important;
   border-radius: 0px !important;
+  max-width: 100%;
+  height: auto;
 }
 
 .btn-primary {
-  /* color: #fff !important; */
   color: rgb(0, 0, 0) !important;
   background-color: #ffffff !important;
   border-color: #000000 !important;
-  /* background-color: #623686 !important;
-  border-color: #623686 !important; */
 }
 
 .btn-primary:hover {
   color: #ffffff !important;
   background-color: #000000 !important;
   border-color: #000000 !important;
-  /* background-color: #6d20c5d7 !important;
-  border-color: #6d20c5d7 !important; */
 }
+
 .btn:focus {
   outline: none !important;
   box-shadow: none !important;
 }
+
 .project-heading {
   color: rgb(0, 0, 0) !important;
   font-size: 2.3em !important;
@@ -636,10 +1175,20 @@ button:focus {
   padding-top: 10px !important;
 }
 
+@media (max-width: 768px) {
+  .project-heading {
+    font-size: 2em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-heading {
+    font-size: 1.8em !important;
+  }
+}
+
 /* --------- */
 /* Resume */
-/* --------- */
-
 .resume-section {
   position: relative !important;
   padding-top: 110px !important;
@@ -673,6 +1222,7 @@ button:focus {
     padding-left: 15px !important;
   }
 }
+
 .resume .resume-title {
   font-size: 2em;
   font-weight: 700;
@@ -749,6 +1299,7 @@ button:focus {
   animation-fill-mode: forwards;
   animation-duration: 0.85s;
 }
+
 @keyframes likeAnimation {
   0% {
     transform: scale(1.5);
@@ -776,6 +1327,7 @@ button:focus {
   background-color: #00000086 !important;
   border-color: #ffffff86 !important;
 }
+
 .fork-btn-inner::after {
   display: none !important;
 }

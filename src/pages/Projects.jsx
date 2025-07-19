@@ -112,6 +112,15 @@ const Projects = () => {
               demoLink="https://www.figma.com/design/kpVVDzJhpYHGwpX98BEyT6/KrounTes-MobAPP?node-id=0-1&t=ITMSrF2VxAU0ZRdi-1"
             />
           </Col>
+           <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={KG}
+              isBlog={false}
+              title="KroeungTes UX/UI"
+              description="This is my year 4 project to complete course mobiles development S2"
+              demoLink="https://www.figma.com/design/kpVVDzJhpYHGwpX98BEyT6/KrounTes-MobAPP?node-id=0-1&t=ITMSrF2VxAU0ZRdi-1"
+            />
+          </Col>
         </Row>
         <p style={{ color: "white" }}>
           To seaking more of my work please kindly watch out my Github or any
