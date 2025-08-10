@@ -9,21 +9,21 @@ const Home = () => {
     <section>
       <Container fluid className="home-section" id="home">
         <Particle />
-        <Container className="home-content">
-          <Row className="align-items-center justify-content-end">
-            <Col md={5} className="home-header">
+        <Container className="home-content text-left">
+          <Row>
+            <Col md={5} className="home-header text-left">
               <h1 className="heading">
                 Hi There!{" "}
-                <span className="wave" role="img" aria-labelledby="wave">
-                  👋🏻
+                <span
+                  className="wave"
+                  role="img"
+                  aria-labelledby="wave text-left">👋🏻
                 </span>
               </h1>
-
               <h1 className="heading-name">
                 I'M
                 <strong className="main-name"> Lao Thomorn</strong>
               </h1>
-
               <div>
                 <Type />
               </div>

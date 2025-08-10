@@ -315,7 +315,7 @@ button:focus {
   padding-top: 1px !important;
 }
 
-/* Updated Home section for responsive background (Modified) */
+/* Updated Home section for responsive background */
 .home-section {
   position: relative;
   z-index: -1;
@@ -327,8 +327,8 @@ button:focus {
   background-repeat: no-repeat;
   background-size: cover; /* Ensures the image covers the section */
   background-attachment: scroll; /* Changed from fixed for mobile compatibility */
-  margin: 0 auto 1.5rem auto; /* Reduced bottom margin from 4rem to 1.5rem */
-  padding: 2rem 1rem 1.5rem 1rem; /* Reduced padding-bottom from 4rem to 1.5rem */
+  margin: 0 auto 1.5rem auto;
+  padding: 2rem 1rem 1.5rem 1rem;
   box-sizing: border-box;
 }
 
@@ -336,8 +336,8 @@ button:focus {
 @media (max-width: 1400px) {
   .home-section {
     width: 100%;
-    padding: 2rem 1.5rem 1.5rem 1.5rem; /* Adjusted padding */
-    margin-bottom: 1.5rem; /* Adjusted margin */
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    margin-bottom: 1.5rem;
     background-size: cover;
   }
 }
@@ -345,8 +345,8 @@ button:focus {
 @media (max-width: 1200px) {
   .home-section {
     width: 100%;
-    padding: 2rem 1rem 1rem 1rem; /* Adjusted padding */
-    margin-bottom: 1rem; /* Adjusted margin */
+    padding: 2rem 1rem 1rem 1rem;
+    margin-bottom: 1rem;
     background-size: cover;
   }
 }
@@ -354,21 +354,21 @@ button:focus {
 @media (max-width: 768px) {
   .home-section {
     width: 100%;
-    min-height: 80vh; /* Reduced min-height for smaller screens */
+    min-height: 80vh;
     background-attachment: scroll;
     background-position: center center;
-    background-size: contain; /* Switch to contain for better scaling */
-    padding: 1.5rem 1rem 1rem 1rem; /* Adjusted padding */
-    margin-bottom: 0.5rem; /* Adjusted margin */
+    background-size: contain;
+    padding: 1.5rem 1rem 1rem 1rem;
+    margin-bottom: 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .home-section {
     width: 100%;
-    min-height: 70vh; /* Further reduced for small screens */
-    padding: 1rem 0.5rem 0.5rem 0.5rem; /* Adjusted padding */
-    margin-bottom: 0.5rem; /* Adjusted margin */
+    min-height: 70vh;
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    margin-bottom: 0.5rem;
     background-position: center center;
     background-size: contain;
     background-attachment: scroll;
@@ -376,74 +376,74 @@ button:focus {
 }
 
 .home-content {
-  padding: 9rem 0 1rem !important; /* Reduced bottom padding from 3rem to 1rem */
+  padding: 6rem 1rem 1rem 1rem !important; /* Adjusted padding for better alignment */
   color: rgb(0, 0, 0);
   text-align: left;
-  margin-bottom: 1rem; /* Reduced margin from 2rem to 1rem */
+  margin-bottom: 0.5rem; /* Reduced margin for tighter spacing */
 }
 
 /* Responsive home content */
 @media (max-width: 1200px) {
   .home-content {
-    padding: 8rem 0 1rem !important; /* Adjusted padding */
-    margin-bottom: 1rem; /* Adjusted margin */
+    padding: 5rem 1rem 0.8rem 1rem !important; /* Adjusted padding */
+    margin-bottom: 0.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .home-content {
-    padding: 6rem 0 0.5rem !important; /* Adjusted padding */
+    padding: 4rem 0.8rem 0.5rem 0.8rem !important; /* Adjusted padding for smaller screens */
     text-align: center;
-    margin-bottom: 0.5rem; /* Adjusted margin */
+    margin-bottom: 0.3rem;
   }
 }
 
 @media (max-width: 480px) {
   .home-content {
-    padding: 5rem 0 0.5rem !important; /* Adjusted padding */
-    margin-bottom: 0.5rem; /* Adjusted margin */
+    padding: 3rem 0.5rem 0.3rem 0.5rem !important; /* Further reduced padding */
+    margin-bottom: 0.2rem;
   }
 }
 
 /* --------- */
-/* Improved About section spacing (Modified) */
+/* Improved About section spacing */
 .home-about-section {
   text-align: left;
-  padding: 1rem 0 !important; /* Reduced padding from 70px to 1rem */
-  margin: 0.5rem 0 !important; /* Reduced margin from 3rem to 0.5rem */
+  padding: 1rem 0 !important;
+  margin: 0.5rem 0 !important;
 }
 
 @media (max-width: 768px) {
   .home-about-section {
-    padding: 0.5rem 0 !important; /* Adjusted padding */
-    margin: 0.5rem 0 !important; /* Adjusted margin */
+    padding: 0.5rem 0 !important;
+    margin: 0.5rem 0 !important;
   }
 }
 
 @media (max-width: 480px) {
   .home-about-section {
-    padding: 0.5rem 0 !important; /* Adjusted padding */
-    margin: 0rem 0 !important; /* Adjusted margin */
+    padding: 0.5rem 0 !important;
+    margin: 0rem 0 !important;
   }
 }
 
 .home-about-description {
   color: white !important;
-  padding: 0.5rem 0 1rem 0 !important; /* Reduced padding-top from 100px to 0.5rem */
+  padding: 0.5rem 0 1rem 0 !important;
   text-align: center;
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 1rem !important; /* Adjusted margin */
 }
 
 @media (max-width: 768px) {
   .home-about-description {
-    padding: 0.5rem 0 1rem 0 !important; /* Adjusted padding */
-    margin-bottom: 1rem !important;
+    padding: 0.5rem 0 0.8rem 0 !important;
+    margin-bottom: 0.8rem !important;
   }
 }
 
 @media (max-width: 480px) {
   .home-about-description {
-    padding: 0.5rem 0 0.5rem 0 !important; /* Adjusted padding */
+    padding: 0.3rem 0 0.5rem 0 !important;
     margin-bottom: 0.5rem !important;
   }
 }
@@ -473,7 +473,6 @@ button:focus {
 /* Improved About main section spacing */
 .about-section {
   position: relative !important;
-  /* padding: 6rem 0 4rem 0 !important; */
   margin: 3rem 0 !important;
   background-image: var(--section-background-color) !important;
   color: rgb(0, 0, 0) !important;
@@ -481,14 +480,12 @@ button:focus {
 
 @media (max-width: 768px) {
   .about-section {
-    /* padding: 4rem 0 3rem 0 !important; */
     margin: 2rem 0 !important;
   }
 }
 
 @media (max-width: 480px) {
   .about-section {
-    /* padding: 3rem 0 2rem 0 !important; */
     margin: 1.5rem 0 !important;
   }
 }
@@ -695,33 +692,37 @@ p {
   .heading-name {
     font-size: 1.4em !important;
     padding-left: 10px !important;
+    text-align: left;
   }
 }
 
 .main-name {
-  color: red;
-  text-align: left !important;
+  color: rgb(0, 0, 0);
+  text-align: left;
 }
 
 .Typewriter__wrapper {
   font-size: 2.2em !important;
-  color: red !important;
+  color: rgb(0, 0, 0) !important;
   font-weight: 600 !important;
-  text-align: left !important;
+  text-align: left;
 }
 
 .Typewriter__cursor {
   font-size: 2.4em !important;
-  color: red !important;
+  text-align: left;
+  color: rgb(0, 0, 0) !important;
 }
 
 /* Responsive typewriter */
 @media (max-width: 1200px) {
   .Typewriter__wrapper {
+    text-align: left;
     font-size: 2em !important;
   }
   .Typewriter__cursor {
     font-size: 2.2em !important;
+    text-align: left;
   }
 }
 
@@ -732,6 +733,7 @@ p {
   }
   .Typewriter__cursor {
     font-size: 1.6em !important;
+    text-align: left;
   }
 }
 
@@ -742,6 +744,7 @@ p {
   .Typewriter__cursor {
     font-size: 1.4em !important;
     display: none !important;
+    text-align: left;
   }
 }
 
@@ -851,7 +854,6 @@ p {
 
 /* --------- */
 /* Footer - Responsive */
-/* --------- */
 .footer {
   background-color: rgb(149, 149, 149);
   bottom: 0 !important;
