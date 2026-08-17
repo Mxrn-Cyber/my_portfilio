@@ -22,8 +22,8 @@ const Projects = () => {
         <p style={{ color: "white" }}>
           Here are a few projects I've worked on recently.
         </p>
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          <Col md={4} className="project-card">
+        <Row className="g-4 justify-content-center pb-2">
+          <Col xs={12} sm={6} lg={4} className="project-card">
             <ProjectCard
               imgPath={lift}
               isBlog={false}
@@ -34,7 +34,7 @@ const Projects = () => {
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          <Col xs={12} sm={6} lg={4} className="project-card">
             <ProjectCard
               imgPath={project}
               isBlog={false}
@@ -44,7 +44,7 @@ const Projects = () => {
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          <Col xs={12} sm={6} lg={4} className="project-card">
             <ProjectCard
               imgPath={kickstart}
               isBlog={false}
@@ -54,7 +54,7 @@ const Projects = () => {
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          <Col xs={12} sm={6} lg={4} className="project-card">
             <ProjectCard
               imgPath={pg}
               isBlog={false}
@@ -64,7 +64,7 @@ const Projects = () => {
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          <Col xs={12} sm={6} lg={4} className="project-card">
             <ProjectCard
               imgPath={krypto}
               isBlog={false}
@@ -75,7 +75,7 @@ const Projects = () => {
             />
           </Col>
 
-          <Col md={4} className="project-card">
+          <Col xs={12} sm={6} lg={4} className="project-card">
             <ProjectCard
               imgPath={first}
               isBlog={false}
@@ -85,7 +85,7 @@ const Projects = () => {
               demoLink="https://www.figma.com/design/eMJmYXf96sOn1TwIiB6PN0/my_love_project?node-id=0-1&t=te8iIsi2n3GiSmHQ-1"
             />
           </Col>
-          <Col md={4} className="project-card">
+          <Col xs={12} sm={6} lg={4} className="project-card">
             <ProjectCard
               imgPath={teacher}
               isBlog={false}
@@ -94,7 +94,7 @@ const Projects = () => {
               ghLink="https://github.com/Mxrn-Cyber/Teacher-Assistant"
             />
           </Col>
-          <Col md={4} className="project-card">
+          <Col xs={12} sm={6} lg={4} className="project-card">
             <ProjectCard
               imgPath={car}
               isBlog={false}
@@ -103,7 +103,7 @@ const Projects = () => {
               ghLink="https://github.com/Mxrn-Cyber/-CarGame-main.cpp"
             />
           </Col>
-          <Col md={4} className="project-card">
+          <Col xs={12} sm={6} lg={4} className="project-card">
             <ProjectCard
               imgPath={KG}
               isBlog={false}
@@ -112,7 +112,7 @@ const Projects = () => {
               demoLink="https://www.figma.com/design/kpVVDzJhpYHGwpX98BEyT6/KrounTes-MobAPP?node-id=0-1&t=ITMSrF2VxAU0ZRdi-1"
             />
           </Col>
-           <Col md={4} className="project-card">
+           <Col xs={12} sm={6} lg={4} className="project-card">
             <ProjectCard
               imgPath={KG}
               isBlog={false}

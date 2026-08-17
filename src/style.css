@@ -20,10 +20,28 @@ html {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+}
+
+/* Keep any image from ever forcing horizontal overflow on small screens */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* The GitHub activity calendar has a fixed intrinsic width; let it scroll
+   sideways on narrow screens instead of overflowing or getting clipped. */
+.github-calendar-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
 }
 
 .yellow {
@@ -92,10 +110,25 @@ button:focus {
 /* Navbar Section - Fully Responsive */
 /* --------- */
 .sticky {
-  background-color: #00000031 !important;
+  background-color: #101018e0 !important;
   transition: all 0.3s ease-out 0s !important;
   box-shadow: 0px 10px 10px 0px rgba(9, 5, 29, 0.171) !important;
   backdrop-filter: blur(15px) !important;
+}
+
+/* Once scrolled, the navbar tints dark — flip text/underline to white so
+   it stays readable instead of black-on-near-black. */
+.sticky .navbar-brand,
+.sticky .navbar-nav .nav-link {
+  color: #ffffff !important;
+}
+
+.sticky .navbar-toggler span {
+  background-color: #ffffff !important;
+}
+
+.sticky .navbar-nav .nav-item a::after {
+  background: #ffffff !important;
 }
 
 .navbar {
@@ -120,6 +153,18 @@ button:focus {
     padding: 0.5rem 1rem !important;
     font-size: 1rem !important;
     background-color: #181a27 !important;
+  }
+
+  /* The mobile navbar background is dark, so the brand, links and the
+     hamburger icon need to switch to light text/bars to stay readable —
+     they were previously black-on-dark and effectively invisible. */
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #ffffff !important;
+  }
+
+  .navbar-toggler span {
+    background-color: #ffffff !important;
   }
 }
 
@@ -932,65 +977,93 @@ p {
   }
 }
 
+/* Skill / tool icon cards — icon and label are sized independently so the
+   label text never inherits the big icon font-size. */
 .tech-icons {
-  font-size: 4.5em !important;
-  margin: 15px !important;
-  padding: 10px !important;
-  opacity: 0.93 !important;
-  border: 1.7px solid rgb(0, 0, 0) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.6rem;
+  min-height: 140px;
+  margin: 10px !important;
+  padding: 1.5rem 1rem !important;
+  opacity: 1 !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, 0.65);
   vertical-align: middle !important;
   text-align: center !important;
-  border-radius: 5px !important;
-  display: table !important;
-  box-shadow: 4px 5px 4px 3px rgba(192, 192, 192, 0.37) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
   overflow: hidden !important;
-  transition: all 0.4s ease 0s !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.tech-icons .icon,
+.tech-icons svg {
+  font-size: 2.75rem !important;
+  line-height: 1 !important;
+  color: rgb(0, 0, 0);
+}
+
+.tech-icons .label {
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  margin: 0 !important;
+}
+
+.tech-icons:hover {
+  transform: translateY(-6px) scale(1.03) !important;
+  overflow: hidden !important;
+  border-color: var(--imp-bold-text-color) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
 }
 
 @media (max-width: 1200px) {
   .tech-icons {
-    font-size: 4em !important;
-    margin: 12px !important;
-    padding: 8px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .tech-icons {
-    font-size: 3.5em !important;
-    margin: 10px !important;
-    padding: 6px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .tech-icons {
-    font-size: 3em !important;
+    min-height: 130px;
     margin: 8px !important;
-    padding: 5px !important;
+    padding: 1.25rem 0.75rem !important;
+  }
+  .tech-icons .icon,
+  .tech-icons svg {
+    font-size: 2.5rem !important;
   }
 }
 
-.tech-icons:hover {
-  transform: scale(1.05) !important;
-  overflow: hidden !important;
-  border: 2.2px solid rgb(0, 0, 0) !important;
-}
-
-.tech-icon-images {
-  padding: 20px !important;
-  line-height: 1.6 !important;
-}
-
 @media (max-width: 768px) {
-  .tech-icon-images {
-    padding: 15px !important;
+  .tech-icons {
+    min-height: 110px;
+    margin: 6px !important;
+    padding: 1rem 0.5rem !important;
+    border-radius: 12px !important;
+  }
+  .tech-icons .icon,
+  .tech-icons svg {
+    font-size: 2.1rem !important;
+  }
+  .tech-icons .label {
+    font-size: 0.75rem !important;
   }
 }
 
 @media (max-width: 480px) {
-  .tech-icon-images {
-    padding: 10px !important;
+  .tech-icons {
+    min-height: 88px;
+    margin: 5px !important;
+    padding: 0.75rem 0.4rem !important;
+    border-radius: 10px !important;
+    gap: 0.35rem;
+  }
+  .tech-icons .icon,
+  .tech-icons svg {
+    font-size: 1.6rem !important;
+  }
+  .tech-icons .label {
+    font-size: 0.62rem !important;
   }
 }
 
@@ -1062,18 +1135,70 @@ p {
 }
 
 .project-card-view {
-  box-shadow: 0 4px 5px 3px rgb(0, 0, 0) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
   color: rgb(0, 0, 0) !important;
-  background-color: transparent !important;
-  opacity: 0.9 !important;
-  transition: all 0.5s ease 0s !important;
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  opacity: 1 !important;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
   height: 100% !important;
+  overflow: hidden !important;
 }
 
 .project-card-view:hover {
-  transform: scale(1.02) !important;
+  transform: translateY(-8px) scale(1.01) !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 5px 3px rgb(255, 255, 255) !important;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2) !important;
+  border-color: var(--imp-bold-text-color) !important;
+}
+
+.project-card-img {
+  height: 200px !important;
+  width: 100%;
+  object-fit: contain !important;
+  border-radius: 12px 12px 0 0 !important;
+  padding: 16px !important;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+@media (max-width: 480px) {
+  .project-card-img {
+    height: 160px !important;
+    padding: 12px !important;
+  }
+}
+
+.project-card-body {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.project-card-text {
+  text-align: justify !important;
+  font-size: 0.95rem !important;
+}
+
+.project-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.project-card-btn {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 120px;
+  border-radius: 8px !important;
 }
 
 .blog-card {
@@ -1157,12 +1282,16 @@ p {
   color: rgb(0, 0, 0) !important;
   background-color: #ffffff !important;
   border-color: #000000 !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease !important;
 }
 
 .btn-primary:hover {
   color: #ffffff !important;
   background-color: #000000 !important;
   border-color: #000000 !important;
+  transform: translateY(-2px) !important;
 }
 
 .btn:focus {

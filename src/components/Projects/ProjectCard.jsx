@@ -6,51 +6,27 @@ import { BsGithub } from "react-icons/bs";
 
 const ProjectCard = (props) => {
   return (
-    <Card
-      className="project-card-view"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignContent: "space-between",
-      }}
-    >
+    <Card className="project-card-view">
       <Card.Img
         variant="top"
         src={props.imgPath}
         alt="card-img"
-        style={{
-          height: "200px",
-          objectFit: "contain",
-          alignSelf: "flex-start",
-          borderRadius: "10%",
-        }}
+        className="project-card-img"
       />
-      <Card.Body
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+      <Card.Body className="project-card-body">
         <Card.Title>{props.title}</Card.Title>
-        <Card.Text style={{ textAlign: "justify", fontSize: "15px" }}>
+        <Card.Text className="project-card-text">
           {props.description}
         </Card.Text>
 
         {/* Conditionally render GitHub and/or Demo buttons based on available links */}
-        <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
+        <div className="project-card-actions">
           {props.ghLink && (
             <Button
               variant="primary"
               href={props.ghLink}
               target="_blank"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
+              className="project-card-btn"
             >
               <BsGithub /> &nbsp; GitHub
             </Button>
@@ -60,11 +36,7 @@ const ProjectCard = (props) => {
               variant="primary"
               href={props.demoLink}
               target="_blank"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
+              className="project-card-btn"
             >
               <CgWebsite /> &nbsp; Demo
             </Button>

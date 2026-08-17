@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -20,15 +20,27 @@ function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
 
-  function scrollHandler() {
-    if (window.scrollY >= 20) {
-      updateNavbar(true);
-    } else {
-      updateNavbar(false);
+  useEffect(() => {
+    // `body { overflow-x: hidden }` (see style.css) makes the browser turn
+    // <body> itself into the scrolling element instead of the window, so
+    // window.scrollY stays 0 forever. Read whichever element actually
+    // scrolled so the "sticky" navbar background reliably kicks in.
+    function scrollHandler() {
+      const scrollY =
+        window.scrollY ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        0;
+      updateNavbar(scrollY >= 20);
     }
-  }
 
-  window.addEventListener("scroll", scrollHandler);
+    window.addEventListener("scroll", scrollHandler, { passive: true });
+    document.body.addEventListener("scroll", scrollHandler, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+      document.body.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
 
   return (
     <Navbar

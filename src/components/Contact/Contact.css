@@ -1,84 +1,115 @@
-.contact-form {
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full viewport height */
+/* --------- */
+/* Contact page wrapper — accounts for the fixed navbar and stays
+   comfortable at every breakpoint instead of the old fixed 60px padding. */
+.contact-page {
+  padding: 7rem 1.5rem 3rem !important;
+  max-width: 1100px;
 }
 
 @media (max-width: 768px) {
-  .contact-form {
-    margin-top: 12rem; /* Move down by 20% of the viewport height */
-    padding: 15rem; /* Adjust padding if needed for smaller screens */
+  .contact-page {
+    padding: 6rem 1rem 2rem !important;
   }
 }
 
+@media (max-width: 480px) {
+  .contact-page {
+    padding: 5.5rem 0.75rem 1.5rem !important;
+  }
+}
+
+/* --------- */
+/* Contact form layout */
 .c-left {
-  text-align: center !important;
-  padding-top: 15rem;
+  text-align: left !important;
+  padding: 2rem 1rem !important;
   color: rgb(0, 0, 0) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.c-left h1 {
+  font-size: 2.2em;
 }
 
 .c-right {
   display: flex;
   justify-content: center;
-  position: relative;
-  padding-top: 12rem;
-  flex: 1;
+  align-items: center;
+  padding: 2rem 1rem !important;
+}
+
+@media (max-width: 768px) {
+  .c-left {
+    text-align: center !important;
+    padding: 1rem 0.5rem !important;
+  }
+
+  .c-left h1 {
+    font-size: 1.8em;
+  }
+
+  .c-right {
+    padding: 1rem 0.5rem !important;
+  }
 }
 
 .c-right > form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  align-items: center;
+  gap: 1.25rem;
+  align-items: stretch;
+  width: 100%;
+  max-width: 24rem;
 }
 
 .c-right .user {
-  width: 24rem;
+  width: 100%;
   height: 3rem;
-  padding: 0.3em;
+  padding: 0.6rem 0.9rem;
   outline: none;
   border: 2px solid #454545;
   border-radius: 8px;
-  font-size: 19px;
+  font-size: 1rem;
   color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.c-right textarea.user {
+  height: 8rem !important;
+  padding-top: 0.75rem;
+  resize: vertical;
+}
+
+.c-right .user:focus {
+  border-color: var(--imp-bold-text-color);
+  box-shadow: 0 0 0 3px rgba(213, 25, 25, 0.15);
 }
 
 .c-right .user:hover {
   box-shadow: 0 0 9px #4a4a4a;
 }
 
-input {
-  background-color: var(--#4a4a4a);
+.c-right .button {
+  align-self: flex-start;
+  padding: 0.6rem 1.75rem;
+  border-radius: 8px;
 }
-textarea {
-  height: 5rem !important;
-  background-color: var(--#4a4a4a);
+
+@media (max-width: 480px) {
+  .c-right .button {
+    align-self: stretch;
+  }
 }
 
 .done {
-  font-size: 19px;
+  font-size: 1rem;
   color: rgb(0, 101, 0);
 }
+
 .not-done {
-  font-size: 19px;
+  font-size: 1rem;
   color: red;
-}
-
-.c-blur1 {
-  top: 1rem;
-  left: 8rem;
-}
-
-@media screen and (max-width: 480px) {
-  .contact-form {
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 0;
-    gap: 5rem;
-    height: auto; /* Adjust height for smaller screens */
-    margin-top: 100rem; /* Add some margin from the top */
-  }
-  .c-right .user {
-    width: 16rem;
-  }
 }
