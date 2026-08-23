@@ -92,21 +92,25 @@
 // export default Contact;
 import React, { useRef, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import emailjs from "emailjs-com";
 import "./Contact.css";
 import { useLanguage } from "../../context/LanguageContext";
+
+// Get a free Access Key at https://web3forms.com (just an email address,
+// no domain allowlist to manage) and paste it below.
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
 
 const ContactForm = () => {
   const { t } = useLanguage();
   const heading = t("contact.heading");
   const form = useRef();
   const [formValues, setFormValues] = useState({
-    user_name: "", // Matches the template variable {{user_name}}
-    user_email: "", // Matches the template variable {{user_email}}
-    message: "", // Matches the template variable {{message}}
+    user_name: "", // Matches the form field name="user_name"
+    user_email: "", // Matches the form field name="user_email"
+    message: "", // Matches the form field name="message"
   });
   const [notDone, setNotDone] = useState(false);
   const [done, setDone] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -114,7 +118,7 @@ const ContactForm = () => {
     setNotDone(false);
   };
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
 
     if (
@@ -126,25 +130,39 @@ const ContactForm = () => {
       return;
     }
 
-    emailjs
-      .sendForm(
-        "service_puecuoq",
-        "template_xv6a10s",
-        form.current,
-        "PLvIwD0Z3LqrsC5N8",
-      )
-      .then(
-        (result) => {
-          console.log("Email sent successfully:", result.text);
-          setDone(true);
-          setFormValues({ user_name: "", user_email: "", message: "" });
-          form.current.reset();
+    setSending(true);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        (error) => {
-          console.error("Error sending email:", error);
-          setNotDone(true);
-        },
-      );
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formValues.user_name,
+          email: formValues.user_email,
+          message: formValues.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setDone(true);
+        setFormValues({ user_name: "", user_email: "", message: "" });
+        form.current.reset();
+      } else {
+        console.error("Web3Forms error:", result.message);
+        setNotDone(true);
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setNotDone(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -182,7 +200,7 @@ const ContactForm = () => {
               value={formValues.message}
             />
             <span className="not-done">{notDone && t("contact.notDone")}</span>
-            <Button type="submit" className="button" disabled={done}>
+            <Button type="submit" className="button" disabled={done || sending}>
               {t("contact.sendButton")}
             </Button>
             <span className="done">{done && t("contact.done")}</span>
