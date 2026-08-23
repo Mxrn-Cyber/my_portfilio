@@ -95,9 +95,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import "./Contact.css";
 import { useLanguage } from "../../context/LanguageContext";
 
-// Get a free Access Key at https://web3forms.com (just an email address,
-// no domain allowlist to manage) and paste it below.
-const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+const WEB3FORMS_ACCESS_KEY = "d50a589a-5e35-4f21-ae59-5fc3635ebdd8";
 
 const ContactForm = () => {
   const { t } = useLanguage();
