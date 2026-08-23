@@ -5,17 +5,19 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { SiFacebook } from "react-icons/si";
 import { FaFigma, FaTiktok } from "react-icons/fa6";
 import "./Social.css";
+import { useLanguage } from "../../context/LanguageContext";
 
 const Social = () => {
+  const { t } = useLanguage();
   return (
     <Container className="social-container">
       <Row>
         <Col md={12} className="contact-social">
           <div className="contact-text">
-            <h1>FIND ME ON</h1>
+            <h2 className="section-subheading">{t("about.findMeOn")}</h2>
             <p>
-              Please don't hesitate to reach out to me and{" "}
-              <span className="yellow">connect.</span>
+              {t("about.connectText")}{" "}
+              <span className="yellow">{t("about.connectHighlight")}</span>
             </p>
           </div>
           <ul className="contact-social-links">

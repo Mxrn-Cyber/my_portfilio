@@ -105,7 +105,10 @@ const Resume = () => {
   const [numPages, setNumPages] = useState(null);
 
   useEffect(() => {
-    setWidth(window.innerWidth);
+    const handleResize = () => setWidth(window.innerWidth);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const onDocumentLoadSuccess = ({ numPages }) => {
@@ -117,7 +120,7 @@ const Resume = () => {
       <Container fluid className="resume-section">
         <Particle />
 
-        <Row className="resume justify-content-center">
+        <Row className="resume justify-content-center g-0">
           <Document
             file={pdf}
             onLoadSuccess={onDocumentLoadSuccess}
@@ -134,14 +137,17 @@ const Resume = () => {
           </Document>
         </Row>
 
-        <Row style={{ justifyContent: "center", position: "relative" }}>
+        <Row
+          className="g-0"
+          style={{ justifyContent: "center", position: "relative" }}
+        >
           <Button
             variant="primary"
             href={pdf}
             target="_blank"
             style={{ maxWidth: "250px" }}
           >
-            <AiOutlineDownload /> &nbsp;Download Resume (Local)
+            <AiOutlineDownload /> &nbsp;Download Resume
           </Button>
         </Row>
       </Container>

@@ -1,6 +1,8 @@
 import React from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 function PreLoader(props) {
+  const { t } = useLanguage();
   return (
     <div id={props.load ? "preloader" : "preloader-none"}>
       <div className="preloader-content">
@@ -9,7 +11,7 @@ function PreLoader(props) {
           <div className="spinner-ring"></div>
         </div>
         <div className="loading-text">
-          <span>Loading</span>
+          <span>{t("preloader.loading")}</span>
           <div className="dots">
             <span></span>
             <span></span>
@@ -18,7 +20,7 @@ function PreLoader(props) {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         #preloader {
           position: fixed;
           top: 0;
@@ -26,11 +28,7 @@ function PreLoader(props) {
           width: 100%;
           height: 100%;
           z-index: 999999;
-          background: linear-gradient(
-            135deg,
-            rgb(255, 255, 255) 0%,
-            rgb(239, 239, 239) 100%
-          );
+          background: var(--bg);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -39,6 +37,9 @@ function PreLoader(props) {
           transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
+        /* Stays in the DOM at full size after loading, so it must never
+           receive pointer events — otherwise it swallows clicks on
+           everything beneath it while the 0.8s fade-out runs. */
         #preloader-none {
           position: fixed;
           top: 0;
@@ -46,19 +47,20 @@ function PreLoader(props) {
           width: 100%;
           height: 100%;
           z-index: 999999;
-          background: (rgb(150, 150, 150) 100%);
+          background: var(--bg);
           display: flex;
           align-items: center;
           justify-content: center;
           opacity: 0;
           visibility: hidden;
+          pointer-events: none;
           transform: scale(1.1);
           transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .preloader-content {
           text-align: center;
-          color: white;
+          color: var(--text);
           animation: slideUp 0.8s ease-out;
         }
 
@@ -72,8 +74,8 @@ function PreLoader(props) {
         .spinner {
           width: 80px;
           height: 80px;
-          border: 4px solid rgba(0, 0, 0, 0.3);
-          border-top: 4px solid white;
+          border: 4px solid var(--border);
+          border-top: 4px solid var(--accent);
           border-radius: 50%;
           animation: spin 1s linear infinite;
         }
@@ -85,17 +87,17 @@ function PreLoader(props) {
           width: 100px;
           height: 100px;
           border: 2px solid transparent;
-          border-top: 2px solid rgba(0, 0, 0, 0.6);
+          border-top: 2px solid var(--text-muted);
           border-radius: 50%;
           animation: spin 2s linear infinite reverse;
         }
 
         .loading-text {
-          font-family: "Arial", sans-serif;
+          font-family: inherit;
           font-size: 18px;
           font-weight: 600;
           display: flex;
-          color: black;
+          color: var(--text);
           flex-direction: column;
           align-items: center;
           justify-content: center;
@@ -105,13 +107,13 @@ function PreLoader(props) {
         .dots {
           display: flex;
           gap: 4px;
-          color: black;
+          color: var(--text);
         }
 
         .dots span {
           width: 6px;
           height: 6px;
-          background-color: black;
+          background-color: var(--accent);
           border-radius: 50%;
           animation: bounce 1.4s infinite ease-in-out;
         }

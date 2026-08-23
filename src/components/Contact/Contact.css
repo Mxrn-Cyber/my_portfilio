@@ -1,67 +1,58 @@
 /* --------- */
-/* Contact page wrapper — accounts for the fixed navbar and stays
-   comfortable at every breakpoint instead of the old fixed 60px padding. */
-.contact-page {
-  padding: 7rem 1.5rem 3rem !important;
-  max-width: 1100px;
-}
-
-@media (max-width: 768px) {
-  .contact-page {
-    padding: 6rem 1rem 2rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-page {
-    padding: 5.5rem 0.75rem 1.5rem !important;
-  }
-}
-
+/* The page shell (.contact-page — navbar clearance, background, vertical
+   rhythm) lives in style.css alongside .about-section / .project-section /
+   .resume-section so all five pages stay on the same scale. This file only
+   handles the layout inside it. */
 /* --------- */
-/* Contact form layout */
+/* Heading is centred above the form, matching the other pages, instead of
+   being a left column beside it — the old two-column split left a big band
+   of dead space between the heading and the inputs. */
 .c-left {
-  text-align: left !important;
-  padding: 2rem 1rem !important;
-  color: rgb(0, 0, 0) !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  text-align: center !important;
+  color: var(--text) !important;
+  padding: 0 1rem !important;
 }
 
-.c-left h1 {
-  font-size: 2.2em;
+.c-left .section-lead {
+  max-width: 34rem;
+  margin: 0 auto 1.5rem;
 }
 
 .c-right {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 2rem 1rem !important;
+  padding: 0 1rem 1rem !important;
 }
 
 @media (max-width: 768px) {
-  .c-left {
-    text-align: center !important;
-    padding: 1rem 0.5rem !important;
-  }
-
-  .c-left h1 {
-    font-size: 1.8em;
-  }
-
+  .c-left,
   .c-right {
-    padding: 1rem 0.5rem !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
   }
 }
 
+/* The form sits in the same bordered surface card the rest of the site
+   uses (cf. .github-section-card, .about-facts-card). */
 .c-right > form {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   align-items: stretch;
   width: 100%;
-  max-width: 24rem;
+  max-width: 34rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+@media (max-width: 480px) {
+  .c-right > form {
+    padding: 1.5rem 1.15rem;
+    border-radius: 16px;
+  }
 }
 
 .c-right .user {
@@ -69,11 +60,11 @@
   height: 3rem;
   padding: 0.6rem 0.9rem;
   outline: none;
-  border: 2px solid #454545;
+  border: 2px solid var(--border);
   border-radius: 8px;
   font-size: 1rem;
-  color: rgb(0, 0, 0);
-  background-color: #ffffff;
+  color: var(--text);
+  background-color: var(--surface);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -83,13 +74,18 @@
   resize: vertical;
 }
 
+.c-right .user::placeholder {
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
 .c-right .user:focus {
-  border-color: var(--imp-bold-text-color);
-  box-shadow: 0 0 0 3px rgba(213, 25, 25, 0.15);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .c-right .user:hover {
-  box-shadow: 0 0 9px #4a4a4a;
+  border-color: var(--accent);
 }
 
 .c-right .button {
@@ -106,10 +102,10 @@
 
 .done {
   font-size: 1rem;
-  color: rgb(0, 101, 0);
+  color: #1f9d55;
 }
 
 .not-done {
   font-size: 1rem;
-  color: red;
+  color: #e5484d;
 }

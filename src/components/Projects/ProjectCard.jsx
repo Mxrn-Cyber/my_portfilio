@@ -3,8 +3,10 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
 import { BsGithub } from "react-icons/bs";
+import { useLanguage } from "../../context/LanguageContext";
 
 const ProjectCard = (props) => {
+  const { t } = useLanguage();
   return (
     <Card className="project-card-view">
       <Card.Img
@@ -15,11 +17,8 @@ const ProjectCard = (props) => {
       />
       <Card.Body className="project-card-body">
         <Card.Title>{props.title}</Card.Title>
-        <Card.Text className="project-card-text">
-          {props.description}
-        </Card.Text>
+        <Card.Text className="project-card-text">{props.description}</Card.Text>
 
-        {/* Conditionally render GitHub and/or Demo buttons based on available links */}
         <div className="project-card-actions">
           {props.ghLink && (
             <Button
@@ -28,7 +27,7 @@ const ProjectCard = (props) => {
               target="_blank"
               className="project-card-btn"
             >
-              <BsGithub /> &nbsp; GitHub
+              <BsGithub /> &nbsp; {t("projects.ghButton")}
             </Button>
           )}
           {props.demoLink && (
@@ -38,7 +37,7 @@ const ProjectCard = (props) => {
               target="_blank"
               className="project-card-btn"
             >
-              <CgWebsite /> &nbsp; Demo
+              <CgWebsite /> &nbsp; {t("projects.demoButton")}
             </Button>
           )}
         </div>

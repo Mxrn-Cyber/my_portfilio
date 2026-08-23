@@ -11,121 +11,102 @@ import first from "../assets/projects/first.png";
 import teacher from "../assets/projects/teacher.png";
 import car from "../assets/projects/car.png";
 import KG from "../assets/projects/KG.png";
+import Physic from "../assets/projects/Physic.png";
+import Portfolio from "../assets/projects/Portfolio.png";
+import { useLanguage } from "../context/LanguageContext";
+
 const Projects = () => {
+  const { t } = useLanguage();
+  const heading = t("projects.heading");
+  const items = t("projects.items");
+
+  const projectList = [
+    {
+      key: "theWalk",
+      imgPath: lift,
+      ghLink: "https://github.com/Mxrn-Cyber/the_walk_project",
+      demoLink: "https://shoestore-bzk.pages.dev/",
+    },
+    {
+      key: "blogger",
+      imgPath: project,
+      demoLink: "https://mornposeidon.blogspot.com/",
+    },
+    {
+      key: "fastapi",
+      imgPath: kickstart,
+      ghLink: "https://github.com/Mxrn-Cyber/Api_Project_Python",
+    },
+    {
+      key: "meakutes",
+      imgPath: pg,
+      demoLink:
+        "https://www.figma.com/design/c86lTcKw6XONsrfZHmBxIB/Meakutes(Khmer)?node-id=4-61&t=LMPh3Y7tT4KDcFbM-1",
+    },
+    {
+      key: "walkFigma",
+      imgPath: krypto,
+      demoLink:
+        "https://www.figma.com/design/OcAIxguEcK9g7Yx3q3K57E/The-Walk(Shoes-Store)?node-id=0-1&t=zVQFMXAcyCXdf8g3-1",
+    },
+    {
+      key: "firstUiUx",
+      imgPath: first,
+      demoLink:
+        "https://www.figma.com/design/eMJmYXf96sOn1TwIiB6PN0/my_love_project?node-id=0-1&t=te8iIsi2n3GiSmHQ-1",
+    },
+    {
+      key: "teacherAssistant",
+      imgPath: teacher,
+      ghLink: "https://github.com/Mxrn-Cyber/Teacher-Assistant",
+    },
+    {
+      key: "car3d",
+      imgPath: car,
+      ghLink: "https://github.com/Mxrn-Cyber/-CarGame-main.cpp",
+    },
+    {
+      key: "kroeungtes",
+      imgPath: KG,
+      demoLink:
+        "https://www.figma.com/design/kpVVDzJhpYHGwpX98BEyT6/KrounTes-MobAPP?node-id=0-1&t=ITMSrF2VxAU0ZRdi-1",
+    },
+    {
+      key: "BookSelling",
+      imgPath: Physic,
+      ghLink: "https://github.com/Mxrn-Cyber/physic_project",
+      demoLink: "https://tutorial-site-client.laothomorn.workers.dev/",
+    },
+    {
+      key: "MyPortfolioWebsite",
+      imgPath: Portfolio,
+      ghLink: "https://github.com/Mxrn-Cyber/my_portfilio",
+      demoLink: "myportfolio-7s0.pages.dev",
+    },
+  ];
+
   return (
     <Container fluid className="project-section">
       <Particle />
       <Container>
         <h1 className="project-heading">
-          Recent Top <strong className="yellow">Works </strong>
+          {heading.a} <strong className="yellow">{heading.highlight} </strong>
         </h1>
-        <p style={{ color: "white" }}>
-          Here are a few projects I've worked on recently.
-        </p>
+        <p className="section-lead">{t("projects.subheading")}</p>
         <Row className="g-4 justify-content-center pb-2">
-          <Col xs={12} sm={6} lg={4} className="project-card">
-            <ProjectCard
-              imgPath={lift}
-              isBlog={false}
-              title="TheWalk "
-              description="TheWalk project you built during your first semester in Year 3 is an e-commerce website where users can buy shoes online, similar to other e-commerce platforms. If you need help with any features, improvements, or have questions about the project, I'm here to assist!"
-              ghLink="https://github.com/Mxrn-Cyber/the_walk_project"
-              demoLink="https://shoestore-bzk.pages.dev/"
-            />
-          </Col>
-
-          <Col xs={12} sm={6} lg={4} className="project-card">
-            <ProjectCard
-              imgPath={project}
-              isBlog={false}
-              title="Blogger Website Blogs"
-              description="This is the project i do from first to uplaod any assingment to Prof. I used to blogger to build it."
-              demoLink="https://mornposeidon.blogspot.com/"
-            />
-          </Col>
-
-          <Col xs={12} sm={6} lg={4} className="project-card">
-            <ProjectCard
-              imgPath={kickstart}
-              isBlog={false}
-              title="Fast API Project"
-              description="FastAPI is the PP from Y2 i used to do it with my project Prof."
-              ghLink="https://github.com/Mxrn-Cyber/Api_Project_Python"
-            />
-          </Col>
-
-          <Col xs={12} sm={6} lg={4} className="project-card">
-            <ProjectCard
-              imgPath={pg}
-              isBlog={false}
-              title="Meakutes Khmer"
-              description="Meakutes Khmer is the Website where user can seeking the places to visit in Cambodia this web haven't complete yet i just done UX/UI, and I plan to complete in the last of the Semester"
-              demoLink="https://www.figma.com/design/c86lTcKw6XONsrfZHmBxIB/Meakutes(Khmer)?node-id=4-61&t=LMPh3Y7tT4KDcFbM-1"
-            />
-          </Col>
-
-          <Col xs={12} sm={6} lg={4} className="project-card">
-            <ProjectCard
-              imgPath={krypto}
-              isBlog={false}
-              title="The Walk Figma User Interface concept first versoin"
-              description="Project The walk is my the project from S1 Y3 at ITE. I have four member in team but it's walk to intergrate i change my plan to headling it alone."
-              // ghLink="https://github.com/19sajib/Project-Krypto-Web-3.0"
-              demoLink="https://www.figma.com/design/OcAIxguEcK9g7Yx3q3K57E/The-Walk(Shoes-Store)?node-id=0-1&t=zVQFMXAcyCXdf8g3-1"
-            />
-          </Col>
-
-          <Col xs={12} sm={6} lg={4} className="project-card">
-            <ProjectCard
-              imgPath={first}
-              isBlog={false}
-              title="My First UX/UI Desgin"
-              description="The Project figma first i used to learn from figma."
-              // ghLink="https://github.com/19sajib/Solidity-Kickstart"
-              demoLink="https://www.figma.com/design/eMJmYXf96sOn1TwIiB6PN0/my_love_project?node-id=0-1&t=te8iIsi2n3GiSmHQ-1"
-            />
-          </Col>
-          <Col xs={12} sm={6} lg={4} className="project-card">
-            <ProjectCard
-              imgPath={teacher}
-              isBlog={false}
-              title="Teacher assistance"
-              description="Teacher assistance is the web platform i used to build it with my team for 5 member by usage vuejs, intergrate Laravel Framework Kindly Check it out too"
-              ghLink="https://github.com/Mxrn-Cyber/Teacher-Assistant"
-            />
-          </Col>
-          <Col xs={12} sm={6} lg={4} className="project-card">
-            <ProjectCard
-              imgPath={car}
-              isBlog={false}
-              title="Car3D Game"
-              description="Source from overseas"
-              ghLink="https://github.com/Mxrn-Cyber/-CarGame-main.cpp"
-            />
-          </Col>
-          <Col xs={12} sm={6} lg={4} className="project-card">
-            <ProjectCard
-              imgPath={KG}
-              isBlog={false}
-              title="KroeungTes UX/UI"
-              description="This is my year 4 project to complete course mobiles development S2"
-              demoLink="https://www.figma.com/design/kpVVDzJhpYHGwpX98BEyT6/KrounTes-MobAPP?node-id=0-1&t=ITMSrF2VxAU0ZRdi-1"
-            />
-          </Col>
-           <Col xs={12} sm={6} lg={4} className="project-card">
-            <ProjectCard
-              imgPath={KG}
-              isBlog={false}
-              title="KroeungTes UX/UI"
-              description="This is my year 4 project to complete course mobiles development S2"
-              demoLink="https://www.figma.com/design/kpVVDzJhpYHGwpX98BEyT6/KrounTes-MobAPP?node-id=0-1&t=ITMSrF2VxAU0ZRdi-1"
-            />
-          </Col>
+          {projectList.map((p) => (
+            <Col xs={12} sm={6} lg={4} className="project-card" key={p.key}>
+              <ProjectCard
+                imgPath={p.imgPath}
+                title={items[p.key]?.title}
+                description={items[p.key]?.description}
+                ghLink={p.ghLink}
+                demoLink={p.demoLink}
+              />
+            </Col>
+          ))}
         </Row>
-        <p style={{ color: "white" }}>
-          To seaking more of my work please kindly watch out my Github or any
-          socail media of mind.Thank you.
-        </p>
+        <p className="section-lead">{t("projects.footerNote")}</p>
       </Container>
     </Container>
   );

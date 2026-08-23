@@ -14,11 +14,16 @@ import {
 } from "react-icons/ai";
 import { GiSkills } from "react-icons/gi"
 import { CgFileDocument } from "react-icons/cg";
+import { BsSunFill, BsMoonStarsFill } from "react-icons/bs";
+import { useTheme } from "../../context/ThemeContext";
+import { useLanguage } from "../../context/LanguageContext";
 
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const { lang, toggleLang, t } = useLanguage();
 
   useEffect(() => {
     // `body { overflow-x: hidden }` (see style.css) makes the browser turn
@@ -64,10 +69,10 @@ function NavBar() {
           <span></span>
         </Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ms-auto" defaultActiveKey="#home">
+          <Nav className="ms-auto align-items-lg-center" defaultActiveKey="#home">
             <Nav.Item>
               <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
-                <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
+                <AiOutlineHome style={{ marginBottom: "2px" }} /> {t("nav.home")}
               </Nav.Link>
             </Nav.Item>
 
@@ -77,7 +82,7 @@ function NavBar() {
                 to="/skillset"
                 onClick={() => updateExpanded(false)}
               >
-                <GiSkills style={{ marginBottom: "2px" }} /> Skillset
+                <GiSkills style={{ marginBottom: "2px" }} /> {t("nav.skillset")}
               </Nav.Link>
             </Nav.Item>
 
@@ -90,7 +95,7 @@ function NavBar() {
                 <AiOutlineFundProjectionScreen
                   style={{ marginBottom: "2px" }}
                 />{" "}
-                Projects
+                {t("nav.projects")}
               </Nav.Link>
             </Nav.Item>
 
@@ -100,7 +105,7 @@ function NavBar() {
                 to="/resume"
                 onClick={() => updateExpanded(false)}
               >
-                <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
+                <CgFileDocument style={{ marginBottom: "2px" }} /> {t("nav.resume")}
               </Nav.Link>
             </Nav.Item>
 
@@ -110,20 +115,42 @@ function NavBar() {
                 to="/contact"
                 onClick={() => updateExpanded(false)}
               >
-                <AiOutlineContacts style={{ marginBottom: "2px" }} /> Contact Me
+                <AiOutlineContacts style={{ marginBottom: "2px" }} /> {t("nav.contact")}
               </Nav.Link>
             </Nav.Item>
 
-            {/* <Nav.Item className="fork-btn">
-              <Button
-                href="https://github.com/19sajib/portfolio"
-                target="_blank"
-                className="fork-btn-inner"
+            <Nav.Item className="navbar-utility-item">
+              <button
+                type="button"
+                className="lang-toggle"
+                onClick={toggleLang}
+                aria-label={t("langToggle.label")}
               >
-                <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
-                <AiFillStar style={{ fontSize: "1.1em" }} />
-              </Button>
-            </Nav.Item> */}
+                <span className={lang === "en" ? "lang-option active" : "lang-option"}>
+                  EN
+                </span>
+                <span className="lang-sep">/</span>
+                <span className={lang === "km" ? "lang-option active" : "lang-option"}>
+                  ខ្មែរ
+                </span>
+              </button>
+            </Nav.Item>
+
+            <Nav.Item className="navbar-utility-item">
+              <button
+                type="button"
+                className="theme-toggle"
+                onClick={toggleTheme}
+                aria-label={
+                  theme === "light" ? t("themeToggle.toDark") : t("themeToggle.toLight")
+                }
+                title={
+                  theme === "light" ? t("themeToggle.toDark") : t("themeToggle.toLight")
+                }
+              >
+                {theme === "light" ? <BsMoonStarsFill /> : <BsSunFill />}
+              </button>
+            </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>

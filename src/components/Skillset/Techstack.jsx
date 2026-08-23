@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import { DiJavascript1, DiReact, DiNodejs, DiPython } from "react-icons/di";
 import {
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiSass,
   SiPhp,
   SiLaravel,
@@ -24,7 +24,7 @@ const Techstack = () => {
         <div className="label">HTML</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiCss3 className="icon" />
+        <SiCss className="icon" />
         <div className="label">CSS</div>
       </Col>
       <Col xs={4} md={2} className="tech-icons">

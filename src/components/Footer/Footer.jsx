@@ -5,24 +5,26 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { SiFacebook } from "react-icons/si";
 import { FaFigma } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa";
+import { useLanguage } from "../../context/LanguageContext";
 const Footer = () => {
+  const { t } = useLanguage();
   let date = new Date();
   let year = date.getFullYear();
   return (
     <Container fluid className="footer">
       <Row>
         <Col md="4" className="footer-copywright">
-          <span>Department Information Technology and Engineering</span>
+          <span>{t("footer.dept")}</span>
         </Col>
         <Col md="4" className="footer-copywright">
-          <span>Copyright © {year}</span>
+          <span>{t("footer.copyright")} {year}</span>
         </Col>
         <Col md="4" className="footer-body">
           <ul className="footer-icons">
             <li className="social-icons">
               <a
                 href="https://github.com/Mxrn-Cyber"
-                style={{ color: "white" }}
+                className="footer-icon-link"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="github"
@@ -33,7 +35,7 @@ const Footer = () => {
             <li className="social-icons">
               <a
                 href="https://x.com/cybermorn"
-                style={{ color: "white" }}
+                className="footer-icon-link"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="twitter"
@@ -44,7 +46,7 @@ const Footer = () => {
             <li className="social-icons">
               <a
                 href="https://www.linkedin.com/in/lao-thomorn-347a4b28b/"
-                style={{ color: "white" }}
+                className="footer-icon-link"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="linkedin"
@@ -55,7 +57,7 @@ const Footer = () => {
             <li className="social-icons">
               <a
                 href="https://www.facebook.com/morn.scripter"
-                style={{ color: "white" }}
+                className="footer-icon-link"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="leetcode"
@@ -66,7 +68,7 @@ const Footer = () => {
             <li className="social-icons">
               <a
                 href="https://www.tiktok.com/@cybermorn?_t=8pGtG1tzu12&_r=1"
-                style={{ color: "white" }}
+                className="footer-icon-link"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="leetcode"
@@ -77,7 +79,7 @@ const Footer = () => {
             <li className="social-icons">
               <a
                 href="https://www.figma.com/@CyberMorn"
-                style={{ color: "white" }}
+                className="footer-icon-link"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="leetcode"

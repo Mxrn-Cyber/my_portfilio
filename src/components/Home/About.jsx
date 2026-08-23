@@ -1,79 +1,74 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import LaptopImg from "../../assets/home-main.svg";
-import Tilt from "react-parallax-tilt";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaFigma, FaTiktok } from "react-icons/fa6";
 import { SiFacebook } from "react-icons/si";
+import { HiOutlineLocationMarker, HiOutlineAcademicCap } from "react-icons/hi";
+import { HiOutlineCpuChip } from "react-icons/hi2";
+import { useLanguage } from "../../context/LanguageContext";
 
 const About = () => {
+  const { t } = useLanguage();
+  const paragraphs = t("about.paragraphs");
+  const heading = t("about.heading");
+  const factsLabels = t("about.factsLabels");
+  const facts = t("about.facts");
+
   return (
     <Container
       fluid
       className="home-about-section"
       id="about"
-      style={{ backgroundColor: "#ffffff", color: "#000000" }}
     >
       <Container>
-        <Row>
-          <Col md={8} className="home-about-description">
-            <h1 style={{ fontSize: "2.6em", color: "#000000" }}>
-              LET ME <span className="yellow"> INTRODUCE </span> MYSELF
-            </h1>
-            <p className="home-about-body" style={{ color: "#000000" }}>
-              Hi, my name is <span className="yellow">Lao Thomorn </span>
-              and I'm from <span className="yellow">Phnom Penh, Cambodia </span>
-              <br />
-              <br />
-              I am recently is a student year 4 at Royal University of Phnom
-              Penh as a ITE student.
-              <br />
-              <br />I am proficient in
-              <b className="yellow">
-                {" "}
-                C,C++, Python, html, Css, Javascript, Sass, Nodejs,ReactJs,
-                Vuejs, Php, Laravel, Mysql, MongoDB, Firebase, Git,
-                Github,Flaskapi, Fastapi.
-              </b>
-              as well as have knowledge in programming languages such as C,
-              Java, Python,
-              <b className="yellow"> GraphQL, and Solidity.</b>
-              <br />
-              <br />I have a passion for working with{" "}
-              <b className="yellow">Node.js, MongoDB,</b> and
-              <i>
-                <b className="yellow">
-                  {" "}
-                  modern Javascript libraries and frameworks
-                </b>
-              </i>
-              &nbsp; like
-              <i>
-                <b className="yellow"> React.js</b>
-              </i>
-              <br />
-              <br />I am also interested in CyberSec Field
-              <i>
-                <b className="yellow"> Because i like hacking </b>and also i
-                like learning
-                <b className="yellow"> Artificial Intelligence.</b>
-              </i>
-              <br />
-            </p>
+        <h1 className="section-heading">
+          {heading.a} <span className="yellow">{heading.highlight}</span>{" "}
+          {heading.b}
+        </h1>
+        <Row className="g-4 about-row">
+          <Col lg={7} className="home-about-description">
+            {Array.isArray(paragraphs) &&
+              paragraphs.map((p, i) => <p key={i}>{p}</p>)}
           </Col>
-          <Col md={4} className="myAvtar">
-            <Tilt>
-              <img src={LaptopImg} className="img-fluid" alt="avatar" />
-            </Tilt>
+          <Col lg={5}>
+            <div className="about-facts-card">
+              <div className="about-fact">
+                <span className="about-fact-icon">
+                  <HiOutlineLocationMarker />
+                </span>
+                <div>
+                  <div className="about-fact-label">{factsLabels.location}</div>
+                  <div className="about-fact-value">{facts.location}</div>
+                </div>
+              </div>
+              <div className="about-fact">
+                <span className="about-fact-icon">
+                  <HiOutlineAcademicCap />
+                </span>
+                <div>
+                  <div className="about-fact-label">{factsLabels.role}</div>
+                  <div className="about-fact-value">{facts.role}</div>
+                </div>
+              </div>
+              <div className="about-fact">
+                <span className="about-fact-icon">
+                  <HiOutlineCpuChip />
+                </span>
+                <div>
+                  <div className="about-fact-label">{factsLabels.focus}</div>
+                  <div className="about-fact-value">{facts.focus}</div>
+                </div>
+              </div>
+            </div>
           </Col>
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
-            <h1 style={{ color: "#000000" }}>FIND ME ON</h1>
-            <p style={{ color: "#000000" }}>
-              Please don't hesitate to reach out to me and{" "}
-              <span className="yellow">connect.</span>
+            <h2 className="section-subheading">{t("about.findMeOn")}</h2>
+            <p>
+              {t("about.connectText")}{" "}
+              <span className="yellow">{t("about.connectHighlight")}</span>
             </p>
             <ul className="home-about-social-links">
               <li className="social-icons">

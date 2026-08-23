@@ -94,8 +94,11 @@ import React, { useRef, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import emailjs from "emailjs-com";
 import "./Contact.css";
+import { useLanguage } from "../../context/LanguageContext";
 
 const ContactForm = () => {
+  const { t } = useLanguage();
+  const heading = t("contact.heading");
   const form = useRef();
   const [formValues, setFormValues] = useState({
     user_name: "", // Matches the template variable {{user_name}}
@@ -114,7 +117,6 @@ const ContactForm = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    // Check if all fields are filled
     if (
       !formValues.user_name ||
       !formValues.user_email ||
@@ -126,10 +128,10 @@ const ContactForm = () => {
 
     emailjs
       .sendForm(
-        "service_puecuoq", // Replace with your EmailJS service ID
-        "template_xv6a10s", // Replace with your EmailJS template ID
+        "service_puecuoq",
+        "template_xv6a10s",
         form.current,
-        "PLvIwD0Z3LqrsC5N8" // Replace with your EmailJS public key
+        "PLvIwD0Z3LqrsC5N8",
       )
       .then(
         (result) => {
@@ -141,52 +143,49 @@ const ContactForm = () => {
         (error) => {
           console.error("Error sending email:", error);
           setNotDone(true);
-        }
+        },
       );
   };
 
   return (
     <Container className="contact-container">
-      <Row>
-        <Col md={6} className="c-left">
-          <h1>Get in Touch</h1>
-          <h1 className="yellow">Contact me</h1>
+      <Row className="justify-content-center">
+        <Col md={12} className="c-left">
+          <h1 className="project-heading">
+            {heading.a} <strong className="yellow">{heading.highlight}</strong>
+          </h1>
+          <p className="section-lead">{t("contact.lead")}</p>
         </Col>
-        <Col md={6} className="c-right">
+        <Col md={12} lg={8} className="c-right">
           <form ref={form} onSubmit={sendEmail}>
             <input
               type="text"
-              name="user_name" // Matches {{user_name}} in the template
+              name="user_name"
               className="user"
-              placeholder="Name"
+              placeholder={t("contact.namePlaceholder")}
               onChange={handleChange}
               value={formValues.user_name}
             />
             <input
               type="email"
-              name="user_email" // Matches {{user_email}} in the template
+              name="user_email"
               className="user"
-              placeholder="Write my email laothomorn@gmail.com"
+              placeholder={t("contact.emailPlaceholder")}
               onChange={handleChange}
               value={formValues.user_email}
             />
             <textarea
-              name="message" // Matches {{message}} in the template
+              name="message"
               className="user"
-              placeholder="Message"
+              placeholder={t("contact.messagePlaceholder")}
               onChange={handleChange}
               value={formValues.message}
             />
-            <span className="not-done">
-              {notDone && "Please, fill all the input fields"}
-            </span>
+            <span className="not-done">{notDone && t("contact.notDone")}</span>
             <Button type="submit" className="button" disabled={done}>
-              Send
+              {t("contact.sendButton")}
             </Button>
-            <span className="done">
-              {done &&
-                "Thanks for contacting me! I have received your message."}
-            </span>
+            <span className="done">{done && t("contact.done")}</span>
           </form>
         </Col>
       </Row>
