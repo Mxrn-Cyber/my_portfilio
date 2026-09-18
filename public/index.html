@@ -5,6 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0b0f19" />
 
+    <!-- Runs before first paint. Two jobs:
+         1. Apply the saved theme to <html> so a visitor whose site preference
+            differs from their OS preference doesn't get a flash of the wrong
+            colours while the JS bundle downloads. This mirrors getInitialTheme()
+            in src/context/ThemeContext.js — keep the two in sync.
+         2. Label the static spinner below in the saved language, so it matches
+            what React renders a moment later. -->
+    <script>
+      (function () {
+        var theme = "light";
+        var lang = "en";
+        try {
+          var t = localStorage.getItem("portfolio-theme");
+          theme =
+            t === "light" || t === "dark"
+              ? t
+              : window.matchMedia &&
+                  window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          var l = localStorage.getItem("portfolio-lang");
+          if (l === "en" || l === "km") lang = l;
+        } catch (e) {
+          /* private mode: fall back to the defaults above */
+        }
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.setAttribute("lang", lang);
+        document.addEventListener("DOMContentLoaded", function () {
+          var el = document.getElementById("sp-text");
+          if (el && lang === "km") el.textContent = "\u1780\u17c6\u1796\u17bb\u1784\u1795\u17d2\u1791\u17bb\u1780";
+        });
+      })();
+    </script>
+
+    <!-- Critical CSS for the static spinner only. Inlined because the main
+         stylesheet is ~240KB; waiting for it would reintroduce the blank gap
+         this markup exists to remove. Values mirror :root in src/style.css. -->
+    <style>
+      :root {
+        --sp-bg: #ffffff;
+        --sp-text: #12131a;
+        --sp-accent: #3d5af1;
+        --sp-border: rgba(15, 23, 42, 0.1);
+        --sp-muted: #5b6072;
+      }
+      :root[data-theme="dark"] {
+        --sp-bg: #0b0f19;
+        --sp-text: #eef1fa;
+        --sp-accent: #7c93ff;
+        --sp-border: rgba(255, 255, 255, 0.09);
+        --sp-muted: #9aa3bf;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --sp-bg: #0b0f19;
+          --sp-text: #eef1fa;
+          --sp-accent: #7c93ff;
+          --sp-border: rgba(255, 255, 255, 0.09);
+          --sp-muted: #9aa3bf;
+        }
+      }
+      html,
+      body {
+        margin: 0;
+        background: var(--sp-bg);
+      }
+      #static-preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 999998;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--sp-bg);
+        color: var(--sp-text);
+        font-family: Inter, "Kantumruy Pro", system-ui, sans-serif;
+      }
+      #static-preloader .sp-inner {
+        text-align: center;
+      }
+      #static-preloader .sp-rings {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 30px;
+      }
+      #static-preloader .sp-a {
+        width: 80px;
+        height: 80px;
+        border: 4px solid var(--sp-border);
+        border-top: 4px solid var(--sp-accent);
+        border-radius: 50%;
+        animation: sp-spin 1s linear infinite;
+      }
+      #static-preloader .sp-b {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        width: 100px;
+        height: 100px;
+        border: 2px solid transparent;
+        border-top: 2px solid var(--sp-muted);
+        border-radius: 50%;
+        animation: sp-spin 2s linear infinite reverse;
+      }
+      #static-preloader .sp-label {
+        font-size: 18px;
+        font-weight: 600;
+      }
+      @keyframes sp-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #static-preloader .sp-a,
+        #static-preloader .sp-b {
+          animation: none;
+        }
+      }
+    </style>
+
     <!-- Google Search Console ownership verification. Deliberately NOT
          managed by react-helmet-async or scripts/prerender.js, so it is
          copied verbatim into every route's static HTML and is never
@@ -116,6 +238,20 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Painted from the HTML itself, so the visitor sees the spinner as soon
+           as the document arrives rather than waiting for the JS bundle to
+           download, parse and mount React. React replaces these children on
+           mount and its own preloader takes over the fade-out. -->
+      <div id="static-preloader">
+        <div class="sp-inner">
+          <div class="sp-rings">
+            <div class="sp-a"></div>
+            <div class="sp-b"></div>
+          </div>
+          <div class="sp-label"><span id="sp-text">Loading</span></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
