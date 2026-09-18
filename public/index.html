@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0b0f19" />
 
+    <!-- Google Search Console ownership verification. Deliberately NOT
+         managed by react-helmet-async or scripts/prerender.js, so it is
+         copied verbatim into every route's static HTML and is never
+         replaced or removed once React mounts. -->
+    <meta name="google-site-verification" content="bWCuts6nPo0z9ngWyMTccZgzpVKENHIGkQV2YpXJLRs" />
+
     <!-- Primary meta. scripts/prerender.js overwrites the title, description,
          keywords and canonical per route at build time; these are the
          home-page defaults and the fallback for any route it doesn't cover. -->
