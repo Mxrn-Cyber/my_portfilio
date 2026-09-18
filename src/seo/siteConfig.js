@@ -30,7 +30,7 @@ const ROUTES = {
       "Lao Thomorn, Cyber-Mxrn, full-stack developer Cambodia, web developer Siem Reap, React developer Cambodia, ICT teacher, UI UX designer Cambodia",
     heading: "Lao Thomorn — Full-Stack Web Developer & ICT Teacher",
     body: [
-      "Welcome to my portfolio. I'm Lao Thomorn, also known as Cyber-Mxrn, a full-stack web developer, UI/UX designer and ICT teacher based in Siem Reap, Cambodia.",
+      "Welcome to my portfolio. I'm Lao Thomorn, also known as Cyber-Mxrn, a full-stack web developer, UI/UX designer and ICT teacher. I'm from Phnom Penh and now based in Siem Reap, Cambodia.",
       "I hold a Bachelor's Degree in Information Technology Engineering from the Royal University of Phnom Penh. I build modern, responsive web applications with React.js, Node.js, Vue.js, Laravel, FastAPI, MongoDB and MySQL.",
       "Alongside teaching practical ICT and digital skills to young people, I work as a freelance full-stack developer and study cybersecurity, ethical hacking and web security.",
     ],

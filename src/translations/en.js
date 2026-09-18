@@ -29,7 +29,7 @@ const en = {
       "IT Support",
     ],
     tagline:
-      "Bachelor Degree of Information Technology Engineering from RUPP, Experties building Web apps and exploring cybersecurity.",
+      "Bachelor's Degree in Information Technology Engineering from RUPP. Expertise in building web apps and exploring cybersecurity.",
     ctaProjects: "View my work",
     ctaContact: "Get in touch",
     photoAlt: "Thomorn",
@@ -60,9 +60,9 @@ const en = {
     },
     facts: {
       location: "Siem Reap, Cambodia",
-      role: "Bachelor Degree student in Information Technology Engineering, Currently Working as an ICT Teacher, and Freelance FullStack Dev",
+      role: "Bachelor's Degree in Information Technology Engineering from RUPP; currently an ICT Teacher and Freelance Full-Stack Developer",
       focus:
-        "FullStack Web Development, UI & UX Designer, Cybersecurity, Technical Support, and GPS Technical,ICT Teacher",
+        "Full-Stack Web Development, UI/UX Design, Cybersecurity, Technical Support, GPS Technical, and ICT Teaching",
     },
     findMeOn: "Find me on",
     connectText: "Please don't hesitate to reach out to me and",
