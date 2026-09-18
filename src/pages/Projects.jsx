@@ -14,6 +14,7 @@ import KG from "../assets/projects/KG.png";
 import Physic from "../assets/projects/Physic.png";
 import Portfolio from "../assets/projects/Portfolio.png";
 import { useLanguage } from "../context/LanguageContext";
+import Seo from "../seo/Seo";
 
 const Projects = () => {
   const { t } = useLanguage();
@@ -87,6 +88,7 @@ const Projects = () => {
 
   return (
     <Container fluid className="project-section">
+      <Seo route="project" />
       <Particle />
       <Container>
         <h1 className="project-heading">

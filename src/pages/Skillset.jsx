@@ -7,6 +7,7 @@ import Toolstack from "../components/Skillset/Toolstack";
 // import Leetcode from "../components/Skillset/Leetcode";
 import Github from "../components/Skillset/Github";
 import { useLanguage } from "../context/LanguageContext";
+import Seo from "../seo/Seo";
 
 const Skillset = () => {
   const { t } = useLanguage();
@@ -15,6 +16,7 @@ const Skillset = () => {
 
   return (
     <Container fluid className="about-section">
+      <Seo route="skillset" />
       <Particle />
       <Container>
         <h1 className="project-heading">

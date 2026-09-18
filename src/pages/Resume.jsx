@@ -98,6 +98,7 @@ import pdf from "../assets/Lao-Thomorn-CV.pdf";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
+import Seo from "../seo/Seo";
 pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Resume = () => {
@@ -117,6 +118,7 @@ const Resume = () => {
 
   return (
     <div>
+      <Seo route="resume" />
       <Container fluid className="resume-section">
         <Particle />
 

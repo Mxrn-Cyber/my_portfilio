@@ -13,6 +13,7 @@ import { useLanguage } from "../context/LanguageContext";
 // than being baked into the file. hero-portrait.png sits alongside it if you
 // ever need a non-WebP copy.
 import HeroImg from "../assets/hero-portrait.webp";
+import Seo from "../seo/Seo";
 
 const Home = () => {
   const { t, lang } = useLanguage();
@@ -20,6 +21,7 @@ const Home = () => {
 
   return (
     <section>
+      <Seo route="home" />
       <Container fluid className="home-section">
         <Particle />
         <Container className="home-hero">
