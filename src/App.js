@@ -24,11 +24,37 @@ function App() {
   const [load, upadateLoad] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      upadateLoad(false);
-    }, 1200);
+    // Hide the preloader once the browser has actually finished loading,
+    // rather than after a fixed timer. The old version waited a flat 1200ms
+    // regardless of how fast the page was ready, which meant a spinner sat on
+    // screen for over a second on every visit even when there was nothing
+    // left to wait for.
+    //
+    // The 1500ms fallback only exists so a stalled asset can't leave the
+    // spinner up forever. On a normal visit it never fires.
+    let cancelled = false;
+    const done = () => {
+      if (!cancelled) upadateLoad(false);
+    };
 
-    return () => clearTimeout(timer);
+    if (document.readyState === "complete") {
+      // Already loaded (React mounted after the load event, or on a warm
+      // cache). One frame keeps the fade-out from being visibly abrupt.
+      const frame = requestAnimationFrame(done);
+      return () => {
+        cancelled = true;
+        cancelAnimationFrame(frame);
+      };
+    }
+
+    window.addEventListener("load", done);
+    const fallback = setTimeout(done, 1500);
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener("load", done);
+      clearTimeout(fallback);
+    };
   }, []);
 
   return (

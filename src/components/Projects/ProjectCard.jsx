@@ -12,7 +12,13 @@ const ProjectCard = (props) => {
       <Card.Img
         variant="top"
         src={props.imgPath}
-        alt="card-img"
+        // Cards below the fold don't need to block the initial render. With
+        // eleven screenshots on this page, lazy loading is the difference
+        // between fetching all of them up front and fetching the two or three
+        // the visitor can actually see.
+        loading="lazy"
+        decoding="async"
+        alt={props.title ? `${props.title} screenshot` : "Project screenshot"}
         className="project-card-img"
       />
       <Card.Body className="project-card-body">
