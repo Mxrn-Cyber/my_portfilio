@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -34,7 +34,9 @@
         document.documentElement.setAttribute("lang", lang);
         document.addEventListener("DOMContentLoaded", function () {
           var el = document.getElementById("sp-text");
-          if (el && lang === "km") el.textContent = "\u1780\u17c6\u1796\u17bb\u1784\u1795\u17d2\u1791\u17bb\u1780";
+          if (el && lang === "km")
+            el.textContent =
+              "\u1780\u17c6\u1796\u17bb\u1784\u1795\u17d2\u1791\u17bb\u1780";
         });
       })();
     </script>
@@ -131,34 +133,65 @@
          managed by react-helmet-async or scripts/prerender.js, so it is
          copied verbatim into every route's static HTML and is never
          replaced or removed once React mounts. -->
-    <meta name="google-site-verification" content="bWCuts6nPo0z9ngWyMTccZgzpVKENHIGkQV2YpXJLRs" />
+    <meta
+      name="google-site-verification"
+      content="bWCuts6nPo0z9ngWyMTccZgzpVKENHIGkQV2YpXJLRs"
+    />
 
     <!-- Primary meta. scripts/prerender.js overwrites the title, description,
          keywords and canonical per route at build time; these are the
          home-page defaults and the fallback for any route it doesn't cover. -->
-    <title data-rh="true">Lao Thomorn — Full-Stack Web Developer in Siem Reap, Cambodia</title>
-    <meta data-rh="true"
+    <title data-rh="true">
+      Lao Thomorn — Full-Stack Web Developer in Siem Reap, Cambodia
+    </title>
+    <meta
+      data-rh="true"
       name="description"
       content="Portfolio of Lao Thomorn (Cyber-Mxrn), a full-stack web developer and ICT teacher in Siem Reap, Cambodia. React, Node.js, Laravel, FastAPI and UI/UX design work."
     />
-    <meta data-rh="true"
+    <meta
+      data-rh="true"
       name="keywords"
       content="Lao Thomorn, Cyber-Mxrn, full-stack developer Cambodia, web developer Siem Reap, React developer Cambodia, ICT teacher, UI UX designer Cambodia"
     />
     <meta name="author" content="Lao Thomorn" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <link data-rh="true" rel="canonical" href="https://myportfolio-7s0.pages.dev/" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <link
+      data-rh="true"
+      rel="canonical"
+      href="https://myportfolio-7s0.pages.dev/"
+    />
 
     <!-- Open Graph (Facebook, LinkedIn, Telegram) -->
     <meta data-rh="true" property="og:type" content="website" />
-    <meta data-rh="true" property="og:site_name" content="Lao Thomorn | Portfolio" />
-    <meta data-rh="true" property="og:title" content="Lao Thomorn — Full-Stack Web Developer in Siem Reap, Cambodia" />
-    <meta data-rh="true"
+    <meta
+      data-rh="true"
+      property="og:site_name"
+      content="Lao Thomorn | Portfolio"
+    />
+    <meta
+      data-rh="true"
+      property="og:title"
+      content="Lao Thomorn — Full-Stack Web Developer in Siem Reap, Cambodia"
+    />
+    <meta
+      data-rh="true"
       property="og:description"
       content="Portfolio of Lao Thomorn (Cyber-Mxrn), a full-stack web developer and ICT teacher in Siem Reap, Cambodia. React, Node.js, Laravel, FastAPI and UI/UX design work."
     />
-    <meta data-rh="true" property="og:url" content="https://myportfolio-7s0.pages.dev/" />
-    <meta data-rh="true" property="og:image" content="https://myportfolio-7s0.pages.dev/og-image.png" />
+    <meta
+      data-rh="true"
+      property="og:url"
+      content="https://myportfolio-7s0.pages.dev/"
+    />
+    <meta
+      data-rh="true"
+      property="og:image"
+      content="https://myportfolio-7s0.pages.dev/og-image.png"
+    />
     <meta data-rh="true" property="og:image:width" content="1200" />
     <meta data-rh="true" property="og:image:height" content="630" />
     <meta property="og:locale" content="en_US" />
@@ -166,20 +199,37 @@
 
     <!-- Twitter / X -->
     <meta data-rh="true" name="twitter:card" content="summary_large_image" />
-    <meta data-rh="true" name="twitter:title" content="Lao Thomorn — Full-Stack Web Developer in Siem Reap, Cambodia" />
-    <meta data-rh="true"
+    <meta
+      data-rh="true"
+      name="twitter:title"
+      content="Lao Thomorn — Full-Stack Web Developer in Siem Reap, Cambodia"
+    />
+    <meta
+      data-rh="true"
       name="twitter:description"
       content="Portfolio of Lao Thomorn (Cyber-Mxrn), a full-stack web developer and ICT teacher in Siem Reap, Cambodia."
     />
-    <meta data-rh="true" name="twitter:image" content="https://myportfolio-7s0.pages.dev/og-image.png" />
+    <meta
+      data-rh="true"
+      name="twitter:image"
+      content="https://myportfolio-7s0.pages.dev/og-image.png"
+    />
 
     <link rel="icon" href="%PUBLIC_URL%/sFav.png" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/sFav.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="sitemap" type="application/xml" href="%PUBLIC_URL%/sitemap.xml" />
+    <link
+      rel="sitemap"
+      type="application/xml"
+      href="%PUBLIC_URL%/sitemap.xml"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="true"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -235,9 +285,7 @@
     </script>
   </head>
   <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
+    <noscript> You need to enable JavaScript to run this app. </noscript>
     <div id="root">
       <!-- Painted from the HTML itself, so the visitor sees the spinner as soon
            as the document arrives rather than waiting for the JS bundle to

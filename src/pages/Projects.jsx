@@ -76,7 +76,7 @@ const Projects = () => {
       key: "BookSelling",
       imgPath: Physic,
       ghLink: "https://github.com/Mxrn-Cyber/physic_project",
-      demoLink: "https://tutorial-site-client.laothomorn.workers.dev/",
+      demoLink: "https://reanphysics.laothomorn.workers.dev",
     },
     {
       key: "MyPortfolioWebsite",
