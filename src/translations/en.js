@@ -137,6 +137,11 @@ const en = {
         description:
           "This is my personal portfolio website that I built to showcase my skills, projects, and experiences. It is built with React.js and Tailwind CSS, and it is hosted on Claudeflare.",
       },
+      meakuteswebsitedemo: {
+        title: "Meakutes Website Demo",
+        description:
+          "This is the website i build for promoting Cambodia Tourism in Covid-19 Era.",
+      },
     },
   },
   resume: {

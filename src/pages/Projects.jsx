@@ -11,6 +11,7 @@ import first from "../assets/projects/first.webp";
 import teacher from "../assets/projects/teacher.webp";
 import car from "../assets/projects/car.webp";
 import KG from "../assets/projects/KG.webp";
+import Newcontent from "../assets/projects/Newcontent.png";
 import Physic from "../assets/projects/Physic.webp";
 import Portfolio from "../assets/projects/Portfolio.webp";
 import { useLanguage } from "../context/LanguageContext";
@@ -43,6 +44,11 @@ const Projects = () => {
       imgPath: pg,
       demoLink:
         "https://www.figma.com/design/c86lTcKw6XONsrfZHmBxIB/Meakutes(Khmer)?node-id=4-61&t=LMPh3Y7tT4KDcFbM-1",
+    },
+    {
+      key: "meakuteswebsitedemo",
+      imgPath: Newcontent,
+      demoLink: "https://meakutes-khmer-app.pages.dev/",
     },
     {
       key: "walkFigma",
