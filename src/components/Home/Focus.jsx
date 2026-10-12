@@ -28,6 +28,7 @@ const Focus = () => {
 
   return (
     <section className="focus-section" id="focus">
+      <Row />
       <Container>
         <Reveal>
           <SectionLabel>{t("focus.label")}</SectionLabel>
