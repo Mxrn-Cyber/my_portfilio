@@ -5,6 +5,9 @@ import App from './App';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { HelmetProvider } from 'react-helmet-async';
+import { applyPerfMode } from './perf';
+
+applyPerfMode();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

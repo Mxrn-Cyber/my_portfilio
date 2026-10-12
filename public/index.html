@@ -170,7 +170,7 @@
     <meta
       data-rh="true"
       property="og:site_name"
-      content="Lao Thomorn | Portfolio"
+      content="Mxrn Cyber"
     />
     <meta
       data-rh="true"
@@ -214,6 +214,10 @@
       name="twitter:image"
       content="https://myportfolio-7s0.pages.dev/og-image.png"
     />
+
+    <!-- Site name Google shows above the result (instead of the host) -->
+    <meta name="application-name" content="Mxrn Cyber" />
+    <meta name="apple-mobile-web-app-title" content="Mxrn Cyber" />
 
     <link rel="icon" href="%PUBLIC_URL%/sFav.png" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/sFav.png" />
@@ -276,9 +280,23 @@
             "@type": "WebSite",
             "@id": "https://myportfolio-7s0.pages.dev/#website",
             "url": "https://myportfolio-7s0.pages.dev/",
-            "name": "Lao Thomorn | Portfolio",
+            "name": "Mxrn Cyber",
+            "alternateName": ["Cyber-Mxrn", "Lao Thomorn", "Lao Thomorn Portfolio"],
             "inLanguage": "en",
             "publisher": { "@id": "https://myportfolio-7s0.pages.dev/#person" }
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://myportfolio-7s0.pages.dev/#nav",
+            "name": "Main navigation",
+            "itemListElement": [
+              { "@type": "SiteNavigationElement", "position": 1, "name": "Home", "url": "https://myportfolio-7s0.pages.dev/" },
+              { "@type": "SiteNavigationElement", "position": 2, "name": "About", "url": "https://myportfolio-7s0.pages.dev/#about" },
+              { "@type": "SiteNavigationElement", "position": 3, "name": "Skillset", "url": "https://myportfolio-7s0.pages.dev/skillset" },
+              { "@type": "SiteNavigationElement", "position": 4, "name": "Projects", "url": "https://myportfolio-7s0.pages.dev/project" },
+              { "@type": "SiteNavigationElement", "position": 5, "name": "Resume", "url": "https://myportfolio-7s0.pages.dev/resume" },
+              { "@type": "SiteNavigationElement", "position": 6, "name": "Contact", "url": "https://myportfolio-7s0.pages.dev/contact" }
+            ]
           }
         ]
       }

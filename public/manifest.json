@@ -1,6 +1,6 @@
 {
-  "short_name": "Thomorn",
-  "name": "Lao Thomorn | Portfolio",
+  "short_name": "Mxrn Cyber",
+  "name": "Mxrn Cyber \u2014 Lao Thomorn Portfolio",
   "description": "Portfolio of Lao Thomorn, full-stack web developer and ICT teacher in Siem Reap, Cambodia.",
   "icons": [
     {
@@ -13,7 +13,7 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "theme_color": "#0b0f19",
-  "background_color": "#0b0f19",
+  "theme_color": "#0a0a0a",
+  "background_color": "#0a0a0a",
   "lang": "en"
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useTheme } from "../../context/ThemeContext";
+import { isLitePerf } from "../../perf";
 
 // Animated 3D scene that sits behind the hero portrait.
 //
@@ -58,11 +59,28 @@ const Hero3D = () => {
             antialias: (window.devicePixelRatio || 1) < 2,
             alpha: true,
             powerPreference: "high-performance",
+            // If the browser would fall back to slow software rendering
+            // (e.g. Chrome with "graphics acceleration" turned off), don't
+            // create the scene at all.
+            failIfMajorPerformanceCaveat: true,
           });
         } catch (e) {
           return; // no WebGL — the portrait still looks fine on its own
         }
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+        // Double-check for a software GPU (SwiftShader / llvmpipe).
+        try {
+          const gl = renderer.getContext();
+          const dbg = gl.getExtension("WEBGL_debug_renderer_info");
+          const gpu = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)) : "";
+          if (/swiftshader|llvmpipe|software|basic render/i.test(gpu)) {
+            renderer.dispose();
+            return;
+          }
+        } catch (e) {
+          // ignore — just carry on
+        }
+        const lite = isLitePerf();
+        renderer.setPixelRatio(lite ? 1 : Math.min(window.devicePixelRatio || 1, 1.25));
         renderer.outputColorSpace = THREE.SRGBColorSpace;
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
         renderer.toneMappingExposure = 1.05;
@@ -331,9 +349,14 @@ const Hero3D = () => {
           renderer.render(scene, camera);
         };
 
-        const loop = () => {
-          frame();
+        // Cap at ~45 fps: looks the same for slow floating shapes, but on
+        // 120 Hz screens it's well under half the GPU work.
+        let last = 0;
+        const loop = (now = 0) => {
           raf = requestAnimationFrame(loop);
+          if (now - last < (lite ? 32 : 22)) return;
+          last = now;
+          frame();
         };
         const start = () => {
           if (running || reduceMotion || !inView || document.hidden) return;

@@ -1,14 +1,18 @@
 import React from "react";
 import Particles from "react-tsparticles";
+import { isLitePerf } from "../perf";
 
 function Particle() {
+  // Skipped on weak GPUs — a full-screen animated canvas is the most
+  // expensive thing on the page there.
+  if (isLitePerf()) return null;
   return (
     <Particles
       id="tsparticles"
       params={{
         particles: {
           number: {
-            value: 160,
+            value: 80,
             density: {
               enable: true,
               value_area: 1500,
@@ -46,7 +50,8 @@ function Particle() {
             },
           },
         },
-        retina_detect: true,
+        retina_detect: false,
+        fpsLimit: 30,
       }}
     />
   );
