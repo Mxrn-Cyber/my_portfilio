@@ -16,6 +16,8 @@ import Physic from "../assets/projects/Physic.webp";
 import Portfolio from "../assets/projects/Portfolio.webp";
 import { useLanguage } from "../context/LanguageContext";
 import Seo from "../seo/Seo";
+import Reveal from "../components/Common/Reveal";
+import SectionLabel from "../components/Common/SectionLabel";
 
 const Projects = () => {
   const { t } = useLanguage();
@@ -96,20 +98,24 @@ const Projects = () => {
       <Seo route="project" />
       <Particle />
       <Container>
+        <SectionLabel arrow="↓">{t("projects.label")}</SectionLabel>
         <h1 className="project-heading">
           {heading.a} <strong className="yellow">{heading.highlight} </strong>
         </h1>
         <p className="section-lead">{t("projects.subheading")}</p>
         <Row className="g-4 justify-content-center pb-2">
-          {projectList.map((p) => (
+          {projectList.map((p, i) => (
             <Col xs={12} sm={6} lg={4} className="project-card" key={p.key}>
+              <Reveal delay={(i % 3) * 90} className="h-100">
               <ProjectCard
+                index={i}
                 imgPath={p.imgPath}
                 title={items[p.key]?.title}
                 description={items[p.key]?.description}
                 ghLink={p.ghLink}
                 demoLink={p.demoLink}
               />
+              </Reveal>
             </Col>
           ))}
         </Row>

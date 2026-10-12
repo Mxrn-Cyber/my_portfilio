@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b0f19" />
+    <meta name="theme-color" content="#0a0a0a" />
 
     <!-- Runs before first paint. Two jobs:
          1. Apply the saved theme to <html> so a visitor whose site preference
@@ -46,26 +46,26 @@
          this markup exists to remove. Values mirror :root in src/style.css. -->
     <style>
       :root {
-        --sp-bg: #ffffff;
-        --sp-text: #12131a;
-        --sp-accent: #3d5af1;
+        --sp-bg: #fafafa;
+        --sp-text: #0a0a0a;
+        --sp-accent: #3f6212;
         --sp-border: rgba(15, 23, 42, 0.1);
-        --sp-muted: #5b6072;
+        --sp-muted: #5a5a55;
       }
       :root[data-theme="dark"] {
-        --sp-bg: #0b0f19;
-        --sp-text: #eef1fa;
-        --sp-accent: #7c93ff;
+        --sp-bg: #0a0a0a;
+        --sp-text: #f5f5f0;
+        --sp-accent: #c6ff3d;
         --sp-border: rgba(255, 255, 255, 0.09);
-        --sp-muted: #9aa3bf;
+        --sp-muted: #a3a39b;
       }
       @media (prefers-color-scheme: dark) {
         :root:not([data-theme="light"]) {
-          --sp-bg: #0b0f19;
-          --sp-text: #eef1fa;
-          --sp-accent: #7c93ff;
+          --sp-bg: #0a0a0a;
+          --sp-text: #f5f5f0;
+          --sp-accent: #c6ff3d;
           --sp-border: rgba(255, 255, 255, 0.09);
-          --sp-muted: #9aa3bf;
+          --sp-muted: #a3a39b;
         }
       }
       html,

@@ -5,14 +5,57 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { SiFacebook } from "react-icons/si";
 import { FaFigma } from "react-icons/fa6";
 import { FaTiktok } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
+
+// Live Siem Reap time, ticking every second.
+const useLocalTime = () => {
+  const fmt = () =>
+    new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Phnom_Penh",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    }).format(new Date());
+  const [time, setTime] = React.useState(fmt);
+  React.useEffect(() => {
+    const id = setInterval(() => setTime(fmt()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  return time;
+};
+
 const Footer = () => {
   const { t } = useLanguage();
+  const time = useLocalTime();
   let date = new Date();
   let year = date.getFullYear();
   return (
     <Container fluid className="footer">
-      <Row>
+      <div className="footer-top">
+        <div className="footer-cta">
+          <p className="footer-cta-kicker">{t("footer.cta")}</p>
+          <Link to="/contact" className="footer-cta-link">
+            {t("footer.ctaLink")} <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+        <div className="footer-meta">
+          <div className="footer-meta-item">
+            <span className="footer-meta-label">{t("footer.localTime")}</span>
+            <span className="footer-clock">
+              <span className="footer-clock-dot" aria-hidden="true" />
+              {time} <small>GMT+7</small>
+            </span>
+          </div>
+          <div className="footer-meta-item">
+            <span className="footer-meta-label">📍</span>
+            <span>{t("footer.location")}</span>
+          </div>
+          <div className="footer-meta-item footer-made">{t("footer.madeWith")}</div>
+        </div>
+      </div>
+      <Row className="footer-bottom">
         <Col md="4" className="footer-copywright">
           <span>{t("footer.dept")}</span>
         </Col>

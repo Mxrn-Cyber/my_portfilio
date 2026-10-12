@@ -33,8 +33,13 @@ const en = {
     ctaProjects: "View my work",
     ctaContact: "Get in touch",
     photoAlt: "Thomorn",
+    swapHint: "Hover or tap me",
+    swapOn: "> access granted_",
+    swapLabel: "Switch between my photo and my hacker avatar",
+    scrollCue: "Scroll to explore",
   },
   about: {
+    label: "Facts",
     heading: {
       a: "Let me",
       highlight: "introduce",
@@ -64,9 +69,28 @@ const en = {
       focus:
         "Full-Stack Web Development, UI/UX Design, Cybersecurity, Technical Support, GPS Technical, and ICT Teaching",
     },
+    cards: {
+      available: "ICT Teacher · Freelance Dev",
+      education: "Education",
+      stack: "Tech stack",
+      passion: "What drives me",
+    },
     findMeOn: "Find me on",
     connectText: "Please don't hesitate to reach out to me and",
     connectHighlight: "connect.",
+  },
+  focus: {
+    label: "Focus",
+    heading: { a: "What I", highlight: "do" },
+    marquee: ["React", "Node.js", "FastAPI", "Figma", "Laravel", "Vue.js", "MongoDB", "Tailwind CSS", "Python", "Cybersecurity", "UI/UX"],
+    items: [
+      { title: "Full-Stack Web Development", desc: "React, Node.js, FastAPI and Laravel apps" },
+      { title: "UI/UX Design", desc: "Wireframes, prototypes and design systems in Figma" },
+      { title: "Cybersecurity", desc: "Web security, ethical hacking and SOC basics" },
+      { title: "ICT Teaching", desc: "Practical digital skills for young people" },
+      { title: "Technical Support", desc: "Hardware, networks and troubleshooting" },
+      { title: "Prototyping", desc: "From idea to a clickable demo, fast" },
+    ],
   },
   skillset: {
     heading1: { a: "Professional", highlight: "Skillset" },
@@ -77,6 +101,8 @@ const en = {
     githubLinkText: "View GitHub profile",
   },
   projects: {
+    label: "Feed",
+    tags: { live: "Live Site", code: "Code", design: "UI/UX Design" },
     heading: { a: "Recent Top", highlight: "Works" },
     subheading: "Here are a few projects I've worked on recently.",
     footerNote:
@@ -160,6 +186,11 @@ const en = {
     done: "Thanks for reaching out! I've received your message.",
   },
   footer: {
+    localTime: "Local time",
+    location: "Siem Reap, Cambodia",
+    cta: "Got a project in mind?",
+    ctaLink: "Let's talk",
+    madeWith: "Made with ☕ in Siem Reap",
     dept: "Department of Information Technology and Engineering",
     copyright: "Copyright ©",
   },

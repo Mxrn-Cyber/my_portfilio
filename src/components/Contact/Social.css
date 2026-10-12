@@ -49,7 +49,7 @@
 .contact-social-icons:hover {
   background: var(--accent) !important;
   border-color: var(--accent);
-  color: #ffffff !important;
+  color: var(--on-accent) !important;
   box-shadow: var(--shadow);
 }
 

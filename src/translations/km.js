@@ -32,8 +32,13 @@ const km = {
     ctaProjects: "មើលការងាររបស់ខ្ញុំ",
     ctaContact: "ទាក់ទងមកខ្ញុំ",
     photoAlt: "តូម៉ន",
+    swapHint: "ចុច ឬដាក់ Mouse លើរូបខ្ញុំ",
+    swapOn: "> access granted_",
+    swapLabel: "ប្តូររវាងរូបថតខ្ញុំ និងរូប Avatar Hacker",
+    scrollCue: "រំកិលចុះដើម្បីមើលបន្ថែម",
   },
   about: {
+    label: "ព័ត៌មាន",
     heading: {
       a: "សូមឱ្យខ្ញុំ",
       highlight: "ណែនាំ",
@@ -58,9 +63,28 @@ const km = {
       focus:
         "អភិវឌ្ឍន៍វេបសាយ សន្តិសុខសាយប័រ រចនា UI/UX ​ គ្រូបង្រៀន ICT នឹងអ្នកសម្របសម្រួលបច្ចេកទេស GPS",
     },
+    cards: {
+      available: "គ្រូ ICT · Freelance Dev",
+      education: "ការសិក្សា",
+      stack: "បច្ចេកវិទ្យាដែលខ្ញុំប្រើ",
+      passion: "អ្វីដែលជំរុញខ្ញុំ",
+    },
     findMeOn: "ស្វែងរកខ្ញុំនៅ",
     connectText: "សូមកុំស្ទាក់ស្ទើរក្នុងការទាក់ទង និង",
     connectHighlight: "ភ្ជាប់ទំនាក់ទំនងជាមួយខ្ញុំ។",
+  },
+  focus: {
+    label: "ជំនាញផ្តោត",
+    heading: { a: "អ្វីដែលខ្ញុំ", highlight: "ធ្វើ" },
+    marquee: ["React", "Node.js", "FastAPI", "Figma", "Laravel", "Vue.js", "MongoDB", "Tailwind CSS", "Python", "Cybersecurity", "UI/UX"],
+    items: [
+      { title: "អភិវឌ្ឍគេហទំព័រ Full-Stack", desc: "កម្មវិធីដោយប្រើ React, Node.js, FastAPI និង Laravel" },
+      { title: "រចនា UI/UX", desc: "Wireframe, Prototype និង Design System ក្នុង Figma" },
+      { title: "សន្តិសុខអ៊ីនធឺណិត", desc: "សុវត្ថិភាពគេហទំព័រ, Ethical Hacking និងមូលដ្ឋាន SOC" },
+      { title: "បង្រៀន ICT", desc: "ជំនាញឌីជីថលជាក់ស្តែងសម្រាប់យុវជន" },
+      { title: "ជំនួយបច្ចេកទេស", desc: "Hardware, បណ្តាញ និងការដោះស្រាយបញ្ហា" },
+      { title: "បង្កើតគំរូ (Prototyping)", desc: "ពីគំនិត ទៅជាគំរូដែលអាចចុចសាកល្បងបាន យ៉ាងរហ័ស" },
+    ],
   },
   skillset: {
     heading1: { a: "ជំនាញ", highlight: "វិជ្ជាជីវៈ" },
@@ -70,6 +94,8 @@ const km = {
     githubLinkText: "មើលគណនី GitHub",
   },
   projects: {
+    label: "ស្នាដៃ",
+    tags: { live: "គេហទំព័រផ្ទាល់", code: "កូដ", design: "រចនា UI/UX" },
     heading: { a: "ស្នាដៃ", highlight: "ថ្មីៗបំផុត" },
     subheading: "នេះជាគម្រោងមួយចំនួនដែលខ្ញុំបានធ្វើថ្មីៗនេះ។",
     footerNote:
@@ -154,6 +180,11 @@ const km = {
     done: "អរគុណសម្រាប់ការទាក់ទង! ខ្ញុំបានទទួលសាររបស់អ្នកហើយ។",
   },
   footer: {
+    localTime: "ម៉ោងក្នុងស្រុក",
+    location: "សៀមរាប, កម្ពុជា",
+    cta: "មានគម្រោងក្នុងចិត្តមែនទេ?",
+    ctaLink: "តោះនិយាយគ្នា",
+    madeWith: "បង្កើតដោយ ☕ នៅសៀមរាប",
     dept: "ដេប៉ាតឺម៉ង់បច្ចេកវិទ្យា និងវិស្វកម្មព័ត៌មាន",
     copyright: "រក្សាសិទ្ធិ ©",
   },

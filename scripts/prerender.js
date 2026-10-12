@@ -29,7 +29,7 @@ const BUILD = path.join(ROOT, "build");
 function loadSiteConfig() {
   const src = fs.readFileSync(
     path.join(ROOT, "src", "seo", "siteConfig.js"),
-    "utf8"
+    "utf8",
   );
   const cjs = src
     .replace(/^export \{[^}]*\};?$/m, "")
@@ -51,34 +51,31 @@ const esc = (s) =>
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 
-// --- rewrite the <head> for one route -------------------------------------
 function applyMeta(html, meta) {
   const url = SITE_URL + meta.path;
   const image = SITE_URL + DEFAULT_OG_IMAGE;
   const title = esc(meta.title);
   const desc = esc(meta.description);
 
-  // Rebuild whole tags, matched by their identifying attribute, so this keeps
-  // working if attribute order in index.html ever changes. data-rh="true" hands
-  // each tag over to react-helmet-async once React mounts — without it, Helmet
-  // appends a second <title>/canonical on client-side navigation instead of
-  // replacing the static one.
   const setMeta = (ident, attrs) => {
-    const re = new RegExp(`<meta[^>]*${ident.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}[^>]*>`);
-    if (re.test(html)) html = html.replace(re, `<meta data-rh="true" ${attrs}/>`);
+    const re = new RegExp(
+      `<meta[^>]*${ident.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}[^>]*>`,
+    );
+    if (re.test(html))
+      html = html.replace(re, `<meta data-rh="true" ${attrs}/>`);
     else console.warn(`[prerender] no tag matched ${ident}`);
   };
 
   html = html.replace(
     /<title[^>]*>[\s\S]*?<\/title>/,
-    `<title data-rh="true">${title}</title>`
+    `<title data-rh="true">${title}</title>`,
   );
 
   const canonRe = /<link[^>]*rel="canonical"[^>]*>/;
   if (canonRe.test(html)) {
     html = html.replace(
       canonRe,
-      `<link data-rh="true" rel="canonical" href="${url}"/>`
+      `<link data-rh="true" rel="canonical" href="${url}"/>`,
     );
   }
 
@@ -87,14 +84,14 @@ function applyMeta(html, meta) {
   setMeta('property="og:title"', `property="og:title" content="${title}"`);
   setMeta(
     'property="og:description"',
-    `property="og:description" content="${desc}"`
+    `property="og:description" content="${desc}"`,
   );
   setMeta('property="og:url"', `property="og:url" content="${url}"`);
   setMeta('property="og:image"', `property="og:image" content="${image}"`);
   setMeta('name="twitter:title"', `name="twitter:title" content="${title}"`);
   setMeta(
     'name="twitter:description"',
-    `name="twitter:description" content="${desc}"`
+    `name="twitter:description" content="${desc}"`,
   );
   setMeta('name="twitter:image"', `name="twitter:image" content="${image}"`);
 
@@ -127,7 +124,7 @@ function applyBody(html, meta) {
   // Leave #root empty so nothing paints before React takes over.
   return html.replace(
     /<noscript>[\s\S]*?<\/noscript>/,
-    `<noscript>${body}</noscript>`
+    `<noscript>${body}</noscript>`,
   );
 }
 
@@ -135,7 +132,9 @@ function applyBody(html, meta) {
 function run() {
   const shellPath = path.join(BUILD, "index.html");
   if (!fs.existsSync(shellPath)) {
-    console.error("[prerender] build/index.html not found — run the build first.");
+    console.error(
+      "[prerender] build/index.html not found — run the build first.",
+    );
     process.exit(1);
   }
   const shell = fs.readFileSync(shellPath, "utf8");
@@ -144,7 +143,9 @@ function run() {
   for (const meta of Object.values(ROUTES)) {
     const html = applyBody(applyMeta(shell, meta), meta);
     const dir =
-      meta.path === "/" ? BUILD : path.join(BUILD, meta.path.replace(/^\//, ""));
+      meta.path === "/"
+        ? BUILD
+        : path.join(BUILD, meta.path.replace(/^\//, ""));
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, "index.html"), html);
     written.push(meta.path);
@@ -162,13 +163,15 @@ function run() {
           `    <lastmod>${today}</lastmod>\n` +
           `    <changefreq>monthly</changefreq>\n` +
           `    <priority>${r.path === "/" ? "1.0" : "0.8"}</priority>\n` +
-          `  </url>`
+          `  </url>`,
       )
       .join("\n") +
     `\n</urlset>\n`;
   fs.writeFileSync(path.join(BUILD, "sitemap.xml"), sitemap);
 
-  console.log(`[prerender] wrote ${written.length} routes: ${written.join(", ")}`);
+  console.log(
+    `[prerender] wrote ${written.length} routes: ${written.join(", ")}`,
+  );
   console.log(`[prerender] wrote sitemap.xml (lastmod ${today})`);
 }
 
