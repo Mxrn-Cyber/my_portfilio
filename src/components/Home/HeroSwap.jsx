@@ -4,8 +4,7 @@ import HeroImg from "../../assets/hero-portrait.webp";
 
 // Hero portrait that glitches into a hooded-hacker avatar.
 // Mouse: hover to switch. Touch / keyboard: tap or press Enter to toggle.
-// Lives in /public so CRA serves it as a plain file (its SVG importer
-// chokes on the animated <style> block inside).
+// Served from /public: CRA's SVG importer can't handle the animated <style> inside.
 const HackerImg = `${process.env.PUBLIC_URL || ""}/hacker-avatar.svg`;
 
 const HeroSwap = () => {

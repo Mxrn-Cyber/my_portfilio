@@ -1,111 +1,17 @@
-// import React, { useState, useRef } from "react";
-// import emailjs from "@emailjs/browser";
-// import { Container, Row, Col } from "react-bootstrap";
-// import Button from "react-bootstrap/Button";
-// import "./Contact.css";
-
-// const Contact = () => {
-//   const form = useRef();
-//   const [done, setDone] = useState(false);
-//   const [notDone, setNotDone] = useState(false);
-//   const [formData, setFormData] = useState({});
-
-//   const handleChange = (e) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//     setDone(false);
-//     setNotDone(false);
-//   };
-
-//   const sendEmail = (e) => {
-//     e.preventDefault();
-
-//     if (!formData.from_name || !formData.reply_to || !formData.message) {
-//       setNotDone(true);
-//     } else {
-//       emailjs
-//         .sendForm(
-//           "service_puecuoq",
-//           "template_xv6a10s",
-//           form.current,
-//           "z9THTEeu_pzWpMAt--"
-//         )
-//         .then(
-//           (result) => {
-//             console.log(result.text);
-//             setDone(true);
-//             setFormData({});
-//             form.current.reset();
-//           },
-//           (error) => {
-//             console.log(error.text);
-//             setNotDone(true);
-//           }
-//         );
-//     }
-//   };
-//   return (
-//     <Container style={{ paddingTop: "50px" }}>
-//       <Row>
-//         <Col md={6} className="c-left">
-//           <h1>Get in Touch</h1>
-//           <h1 className="yellow">Contact me</h1>
-//         </Col>
-//         <Col md={6} className="c-right">
-//           <form ref={form} onSubmit={sendEmail}>
-//             <input
-//               type="text"
-//               name="from_name"
-//               className="user"
-//               placeholder="Name"
-//               onChange={handleChange}
-//             />
-//             <input
-//               type="email"
-//               name="reply_to"
-//               className="user"
-//               placeholder="Email"
-//               onChange={handleChange}
-//             />
-//             <textarea
-//               name="message"
-//               className="user"
-//               placeholder="Message"
-//               onChange={handleChange}
-//             />
-//             <span className="not-done">
-//               {notDone && "Please, fill all the input field"}
-//             </span>
-//             <Button type="submit" className="button" disabled={done}>
-//               Send
-//             </Button>
-//             <span className="done">
-//               {done &&
-//                 "Thanks for contacting me and be sure i have recieved your mail."}
-//             </span>
-//           </form>
-//         </Col>
-//       </Row>
-//     </Container>
-//   );
-// };
-
-// export default Contact;
 import React, { useRef, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "./Contact.css";
 import { useLanguage } from "../../context/LanguageContext";
 
+// Web3Forms access keys are meant to be public (they only allow sending to the owner's inbox).
 const WEB3FORMS_ACCESS_KEY = "d50a589a-5e35-4f21-ae59-5fc3635ebdd8";
+const EMPTY = { user_name: "", user_email: "", message: "" };
 
 const ContactForm = () => {
   const { t } = useLanguage();
   const heading = t("contact.heading");
   const form = useRef();
-  const [formValues, setFormValues] = useState({
-    user_name: "", // Matches the form field name="user_name"
-    user_email: "", // Matches the form field name="user_email"
-    message: "", // Matches the form field name="message"
-  });
+  const [formValues, setFormValues] = useState(EMPTY);
   const [notDone, setNotDone] = useState(false);
   const [done, setDone] = useState(false);
   const [sending, setSending] = useState(false);
@@ -119,11 +25,7 @@ const ContactForm = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
 
-    if (
-      !formValues.user_name ||
-      !formValues.user_email ||
-      !formValues.message
-    ) {
+    if (!formValues.user_name || !formValues.user_email || !formValues.message) {
       setNotDone(true);
       return;
     }
@@ -149,7 +51,7 @@ const ContactForm = () => {
 
       if (result.success) {
         setDone(true);
-        setFormValues({ user_name: "", user_email: "", message: "" });
+        setFormValues(EMPTY);
         form.current.reset();
       } else {
         console.error("Web3Forms error:", result.message);

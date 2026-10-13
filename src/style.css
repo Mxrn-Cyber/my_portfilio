@@ -49,9 +49,7 @@
   --shadow-lg: 0 24px 55px rgba(0, 0, 0, 0.6);
 }
 
-/* Respect the OS preference before React has a chance to read/write
-   localStorage and stamp data-theme, so there's no white flash for
-   dark-mode users on first paint. */
+/* Match the OS theme before React sets data-theme (no white flash). */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0a0a0a;
@@ -478,9 +476,7 @@ button:focus {
 }
 
 /* --------- */
-/* Hero — split layout: intro text on one side, portrait on the other.
-   No poster graphic to crop or mis-align anymore — height is driven purely
-   by content, so it's correct at every viewport width by construction. */
+/* Hero: intro text on one side, portrait on the other. */
 /* --------- */
 .wave {
   animation-name: wave-animation;
@@ -517,12 +513,7 @@ button:focus {
   }
 }
 
-/* The particle canvas is position:fixed and covers the whole viewport. A
-   positioned element paints above in-flow content regardless of DOM order,
-   so without this it sat on top of the page and swallowed every click on a
-   link or button that wasn't itself promoted into a stacking context — the
-   hero's "View my work" among them. It is pure decoration, so it should
-   never receive pointer events at all. */
+/* Decorative full-screen particle canvas — must never catch clicks. */
 #tsparticles {
   position: fixed !important;
   background-repeat: no-repeat !important;
@@ -721,10 +712,7 @@ button:focus {
   padding: 1.5rem 0;
 }
 
-/* The hero portrait is a transparent cut-out, so it floats straight on the
-   hero background instead of sitting in a card — a card would box in the
-   silhouette and defeat the point of cutting it out. A soft accent glow
-   sits behind it for depth. */
+/* Transparent cut-out portrait with a soft accent glow behind it. */
 .hero-photo-frame {
   position: relative;
   width: 100%;
@@ -746,12 +734,7 @@ button:focus {
   );
 }
 
-/* Outline around the cut-out. drop-shadow() follows the alpha channel, so
-   stacking it in eight directions traces the silhouette — including the
-   hair — which a border or outline could never do.
-
-   --hero-stroke-width  how far the outline spreads.
-   --hero-stroke-color  its colour (a token, so it flips with the theme). */
+/* Outline that follows the cut-out's alpha (stacked drop-shadows). */
 .hero-photo {
   width: 100%;
   height: auto;
@@ -779,9 +762,7 @@ button:focus {
         0 var(--hero-stroke-color)
     )
     drop-shadow(0 18px 24px rgba(0, 0, 0, 0.28));
-  /* Fade the very bottom out so the photo's crop edge — and the outline
-     along it — dissolve into the page instead of ending in a hard boxy
-     line. Masking runs after filter(), so the stroke fades with it. */
+  /* Fade out the bottom crop edge. */
   -webkit-mask-image: linear-gradient(
     to bottom,
     #000 0%,
@@ -1404,9 +1385,7 @@ p {
    ========================================================================== */
 
 /* ---------- Hero media + 3D hacking-tools scene ---------- */
-/* The portrait's outline is 9 stacked drop-shadows. Giving the tilt wrapper
-   and the images their own GPU layer means Chrome draws that outline once
-   and then just moves it, instead of redrawing it on every mouse move. */
+/* Own GPU layer so the outline isn't redrawn on every tilt. */
 .home-hero-media > div:not(.hero-3d),
 .hero-swap-photo,
 .hero-swap-avatar {
@@ -1942,10 +1921,7 @@ p {
   mask-image: linear-gradient(to bottom, #000 0%, #000 86%, transparent 100%);
 }
 
-/* Smooth swap: plain transitions (not keyframes), so moving the mouse in
-   and out quickly just reverses from wherever it is — no jumps.
-   The avatar opens as a growing circle from the face; the photo eases back
-   and fades underneath it. */
+/* Transitions (not keyframes) so hovering in/out mid-way reverses smoothly. */
 .hero-swap-photo,
 .hero-swap-avatar,
 .hero-swap-scan,

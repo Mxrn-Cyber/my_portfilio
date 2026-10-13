@@ -1,83 +1,96 @@
-# JS Portfolio Website
+# Mxrn Cyber — Portfolio
 
-A sleek, modern, and fully responsive portfolio website built with **JavaScript**, **React**, and styled using **React-Bootstrap** with custom CSS. Perfect for showcasing your projects and skills with an easy-to-customize design.
+Personal portfolio of **Lao Thomorn (Mxrn Cyber)**, a full-stack web developer, UI/UX designer and ICT teacher based in Siem Reap, Cambodia.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20Online-brightgreen?style=flat-square&logo=react)](http://myportfolio-7s0.pages.dev/)
-[![GitHub Stars](https://img.shields.io/github/stars/your-username/js-portfolio-website?style=flat-square)](https://github.com/your-username/js-portfolio-website)
+**Live site:** [myportfolio-7s0.pages.dev](https://myportfolio-7s0.pages.dev/)
 
-## ✨ Features
+## Features
 
-- **📖 Multi-Page Layout**: Structured navigation for Home, About, Projects, Contact, and more.
-- **🎨 Customizable Styling**: Powered by React-Bootstrap and CSS with easily adjustable colors and themes.
-- **📱 Fully Responsive**: Optimized for seamless viewing on desktops, tablets, and mobile devices.
+- **3D hero**: a three.js scene of floating "hacking tools" (a laptop with a live terminal, a padlock, a USB stick and a `>_` tile) that follows the mouse and scroll
+- **Hacker mode**: hover or tap the portrait and it switches to a hooded-hacker avatar
+- **Lime-on-black theme** with light and dark modes
+- **English and Khmer** throughout
+- **Bento-grid About section**, a Focus list with scrolling tech names, and project cards that tilt in 3D
+- **Live Siem Reap clock** in the footer
+- **SEO**: each route is pre-rendered with its own title, description, Open Graph tags and structured data, plus a sitemap
+- **Performance**:
+  - three.js loads lazily
+  - animations pause when off screen
+  - the 3D scene is skipped on phones
+  - a "lite" mode turns on automatically for weak GPUs
+  - all animations respect reduced-motion settings
 
-## 🚀 Getting Started
+## Tech stack
 
-Follow these steps to set up the project locally. You'll need **Node.js** and **Git** installed globally.
+| Area      | Tools                                                              |
+| --------- | ------------------------------------------------------------------ |
+| Framework | React 18 (Create React App), React Router 6                        |
+| UI        | React-Bootstrap, custom CSS (design tokens in `src/style.css`)     |
+| 3D/motion | three.js, react-parallax-tilt, tsparticles, typewriter-effect      |
+| Content   | react-pdf (resume viewer), react-helmet-async (SEO tags)           |
+| Contact   | Web3Forms                                                          |
+| Hosting   | Cloudflare Pages, deployed by GitHub Actions                       |
 
-### Prerequisites
-- Node.js (v14 or higher)
-- npm (included with Node.js)
-- Git
+## Getting started
 
-### Installation
+You need Node.js 18 or newer.
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/your-username/js-portfolio-website.git
-   ```
-   Replace `your-username` with your actual GitHub username or repository URL.
+```bash
+git clone https://github.com/Mxrn-Cyber/my_portfilio.git
+cd my_portfilio
+npm install
+npm start          # http://localhost:3000
+```
 
-2. **Navigate to the Project Directory**:
-   ```bash
-   cd js-portfolio-website
-   ```
+| Command         | What it does                                                        |
+| --------------- | ------------------------------------------------------------------- |
+| `npm start`     | Runs the dev server with hot reload                                 |
+| `npm run build` | Builds to `build/`, then pre-renders each route and writes `sitemap.xml` |
+| `npm test`      | Runs the test runner                                                |
 
-3. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
+Add `?perf=full` or `?perf=lite` to the URL to force a performance mode while testing.
 
-### Running the App
+## Project structure
 
-1. **Start the Development Server**:
-   ```bash
-   npm start
-   ```
-   This runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) in your browser to view it. The page will auto-reload on code changes.
+```
+public/
+  index.html            # base HTML, meta tags, structured data
+  hacker-avatar.svg     # hover avatar (animated SVG)
+scripts/
+  prerender.js          # post-build: per-route HTML + sitemap
+src/
+  pages/                # Home, Skillset, Projects, Resume, Contact
+  components/
+    Home/               # Hero3D, HeroSwap, Focus, About, Type
+    Common/             # Reveal (scroll animation), SectionLabel
+    Navbar/ Footer/ Projects/ Skillset/ Contact/
+  context/              # ThemeContext, LanguageContext
+  translations/         # en.js, km.js — all page text
+  seo/                  # siteConfig.js (titles, descriptions), Seo.jsx
+  perf.js               # weak-GPU detection ("lite" mode)
+  style.css             # design tokens + all main styles
+```
 
-2. **Build for Production** (optional):
-   ```bash
-   npm run build
-   ```
-   This generates an optimized production build in the `build` folder.
+## Customizing
 
-## 🛠️ Contributing
+- **Text**: edit `src/translations/en.js` and `src/translations/km.js`.
+- **Colors**: change the tokens at the top of `src/style.css` (`--accent`, `--bg`, and so on).
+- **Projects**: edit the list in `src/pages/Projects.jsx`. Each project's text lives under `projects.items` in the translation files.
+- **SEO and domain**: edit `src/seo/siteConfig.js`. To move to a custom domain, change `SITE_URL` there.
+- **Resume**: replace `src/assets/Lao-Thomorn-CV.pdf`.
 
-We welcome contributions to make this project even better! To contribute:
+## Deployment
 
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add your feature description"
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-5. Open a Pull Request on GitHub.
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and deploys `build/` to Cloudflare Pages.
 
-Please ensure your code follows the project's coding standards and includes relevant documentation.
+It needs two repository secrets: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
 
-## ❤️ Show Your Support
+## Author
 
-If you like this project, give it a **⭐ Star** on [GitHub](https://github.com/your-username/js-portfolio-website) to show your support!
+**Lao Thomorn — Mxrn Cyber**
 
-## 🥷🏻 Author
+- GitHub: [@Mxrn-Cyber](https://github.com/Mxrn-Cyber)
+- LinkedIn: [Lao Thomorn](https://www.linkedin.com/in/lao-thomorn-347a4b28b/)
+- Figma: [@CyberMorn](https://www.figma.com/@CyberMorn)
 
-**Mxrn_Cyber**  
-Built with passion and creativity. Customize it, make it yours, and share your work!
+If you like this project, give it a ⭐ on GitHub.

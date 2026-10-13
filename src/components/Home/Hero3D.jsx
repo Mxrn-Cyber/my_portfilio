@@ -2,15 +2,9 @@ import React, { useEffect, useRef } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { isLitePerf } from "../../perf";
 
-// Animated 3D scene that sits behind the hero portrait.
-//
-// three.js is loaded with a dynamic import, so it lands in its own chunk and
-// never delays the first paint of the page. The scene:
-//   - a laptop running a terminal, a padlock, a USB stick and a ">_" tile
-//   - two small floating shapes
-//   - tilts toward the mouse and spins a little as you scroll
-// It pauses when the hero is off screen or the tab is hidden, and renders a
-// single still frame for visitors who ask for reduced motion.
+// 3D "hacking tools" scene behind the hero portrait (three.js, lazy-loaded).
+// Follows the mouse and scroll, pauses when off screen or the tab is hidden,
+// and renders a single still frame for reduced-motion users.
 
 const PALETTE_LIGHT = ["#c6ff3d", "#0a0a0a", "#d9d9d4", "#9ae600", "#2a2a2a"];
 const PALETTE_DARK = ["#c6ff3d", "#f5f5f0", "#3a3a3a", "#9ae600", "#8a8a85"];
@@ -33,8 +27,7 @@ const Hero3D = () => {
     let disposed = false;
     let cleanup = () => {};
 
-    // Phones and low-power devices skip the 3D scene entirely — the hero
-    // still has the portrait / hacker swap, and the page stays fast.
+    // Skip on phones and low-power devices.
     const lowPower =
       window.innerWidth < 768 ||
       (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 2) ||
@@ -59,15 +52,13 @@ const Hero3D = () => {
             antialias: (window.devicePixelRatio || 1) < 2,
             alpha: true,
             powerPreference: "high-performance",
-            // If the browser would fall back to slow software rendering
-            // (e.g. Chrome with "graphics acceleration" turned off), don't
-            // create the scene at all.
+            // Don't fall back to slow software rendering.
             failIfMajorPerformanceCaveat: true,
           });
         } catch (e) {
           return; // no WebGL — the portrait still looks fine on its own
         }
-        // Double-check for a software GPU (SwiftShader / llvmpipe).
+        // Bail out on software GPUs (SwiftShader / llvmpipe).
         try {
           const gl = renderer.getContext();
           const dbg = gl.getExtension("WEBGL_debug_renderer_info");
@@ -77,7 +68,7 @@ const Hero3D = () => {
             return;
           }
         } catch (e) {
-          // ignore — just carry on
+          // ignore
         }
         const lite = isLitePerf();
         renderer.setPixelRatio(lite ? 1 : Math.min(window.devicePixelRatio || 1, 1.25));
@@ -106,7 +97,7 @@ const Hero3D = () => {
         const world = new THREE.Group();
         scene.add(world);
 
-        // Two plain shapes (kept light for performance) ...
+        // Two plain accent shapes
         const geos = [
           new THREE.SphereGeometry(0.4, 32, 32),
           new THREE.IcosahedronGeometry(0.45, 0),
@@ -137,8 +128,7 @@ const Hero3D = () => {
           return m;
         });
 
-        // ... plus four "hacking tools": a laptop running a terminal, a
-        // padlock, a USB stick and a floating ">_" prompt tile.
+        // Hacking tools: laptop with a live terminal, padlock, USB stick, ">_" tile
         const LIME = new THREE.Color("#c6ff3d");
         const darkMat = new THREE.MeshStandardMaterial({ color: "#1a1a1a", metalness: 0.6, roughness: 0.35 });
         const metalMat = new THREE.MeshStandardMaterial({ color: "#d9d9d4", metalness: 1, roughness: 0.22 });
@@ -349,8 +339,7 @@ const Hero3D = () => {
           renderer.render(scene, camera);
         };
 
-        // Cap at ~45 fps: looks the same for slow floating shapes, but on
-        // 120 Hz screens it's well under half the GPU work.
+        // Cap the frame rate (~45 fps, ~30 in lite mode) to save GPU work.
         let last = 0;
         const loop = (now = 0) => {
           raf = requestAnimationFrame(loop);
@@ -413,7 +402,7 @@ const Hero3D = () => {
         };
       })
       .catch(() => {
-        // Chunk failed to load — fail quietly, the hero still works.
+        // three.js failed to load — the hero works without it.
       });
 
     return () => {

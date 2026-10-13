@@ -21,25 +21,17 @@ import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [load, upadateLoad] = useState(true);
+  const [load, setLoad] = useState(true);
 
   useEffect(() => {
-    // Hide the preloader once the browser has actually finished loading,
-    // rather than after a fixed timer. The old version waited a flat 1200ms
-    // regardless of how fast the page was ready, which meant a spinner sat on
-    // screen for over a second on every visit even when there was nothing
-    // left to wait for.
-    //
-    // The 1500ms fallback only exists so a stalled asset can't leave the
-    // spinner up forever. On a normal visit it never fires.
+    // Hide the preloader when the page has loaded (1.5s fallback for stalled assets).
     let cancelled = false;
     const done = () => {
-      if (!cancelled) upadateLoad(false);
+      if (!cancelled) setLoad(false);
     };
 
     if (document.readyState === "complete") {
-      // Already loaded (React mounted after the load event, or on a warm
-      // cache). One frame keeps the fade-out from being visibly abrupt.
+      // Already loaded — wait one frame so the fade-out isn't abrupt.
       const frame = requestAnimationFrame(done);
       return () => {
         cancelled = true;

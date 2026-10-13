@@ -1,14 +1,6 @@
-// Detects weak / integrated GPUs once at startup and turns on a "lite" mode.
-//
-// Why: on Intel-graphics Macs (e.g. UHD 630), Chrome renders through the
-// integrated GPU and gets slow with full-screen animated canvases under a
-// blurred navbar. Safari reports its GPU as "Apple GPU", so it never matches
-// here and keeps the full effects.
-//
-// Lite mode:  <html data-perf="lite">
-//   - background particle dots are not rendered
-//   - the navbar uses a solid background instead of a live blur
-//   - the 3D hero scene renders at 1x resolution and ~30 fps
+// Detects weak/integrated GPUs (e.g. Chrome on Intel Macs) and sets
+// <html data-perf="lite">: no particles, solid navbar, lighter 3D scene.
+// Override with ?perf=full or ?perf=lite.
 
 const WEAK_GPU = /intel|uhd|iris|hd graphics|swiftshader|llvmpipe|software|mali-4|adreno \(tm\) [34]/i;
 
@@ -32,7 +24,6 @@ let cached = null;
 export function isLitePerf() {
   if (cached !== null) return cached;
   if (typeof window === "undefined") return (cached = false);
-  // Manual override for testing: ?perf=full or ?perf=lite
   const q = new URLSearchParams(window.location.search).get("perf");
   if (q === "full") return (cached = false);
   if (q === "lite") return (cached = true);

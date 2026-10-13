@@ -46,8 +46,7 @@ export const LanguageProvider = ({ children }) => {
 
   const toggleLang = () => setLang((prev) => (prev === "en" ? "km" : "en"));
 
-  // t("about.paragraphs") returning an array works too — callers just need
-  // to know which keys hold arrays vs strings.
+  // Returns strings, arrays or objects depending on the key.
   const t = (key) => {
     const value = lookup(dictionaries[lang] || dictionaries.en, key);
     if (value !== undefined) return value;

@@ -4,8 +4,21 @@ import { useLanguage } from "../../context/LanguageContext";
 import Reveal from "../Common/Reveal";
 import SectionLabel from "../Common/SectionLabel";
 
-// "Focus" — the disciplines I work in, as a big-type list plus one marquee
-// row of tech names underneath.
+// Scrolling row of tech names. Words are doubled so the loop is seamless.
+const MarqueeRow = ({ words, reverse }) => (
+  <div className={`marquee${reverse ? " marquee-reverse" : ""}`} aria-hidden="true">
+    <div className="marquee-track">
+      {[...words, ...words].map((w, i) => (
+        <span className="marquee-item" key={i}>
+          {w}
+          <span className="marquee-star">✦</span>
+        </span>
+      ))}
+    </div>
+  </div>
+);
+
+// "Focus": numbered list of disciplines between two marquee rows.
 const Focus = () => {
   const { t } = useLanguage();
   const items = t("focus.items");
@@ -13,22 +26,9 @@ const Focus = () => {
   const marquee = t("focus.marquee");
   const words = Array.isArray(marquee) ? marquee : [];
 
-  const Row = ({ reverse }) => (
-    <div className={`marquee ${reverse ? "marquee-reverse" : ""}`} aria-hidden="true">
-      <div className="marquee-track">
-        {[...words, ...words].map((w, i) => (
-          <span className="marquee-item" key={i}>
-            {w}
-            <span className="marquee-star">✦</span>
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-
   return (
     <section className="focus-section" id="focus">
-      <Row />
+      <MarqueeRow words={words} />
       <Container>
         <Reveal>
           <SectionLabel>{t("focus.label")}</SectionLabel>
@@ -48,7 +48,7 @@ const Focus = () => {
           ))}
         </ol>
       </Container>
-      <Row reverse />
+      <MarqueeRow words={words} reverse />
     </section>
   );
 };

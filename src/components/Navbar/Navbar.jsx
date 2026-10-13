@@ -3,16 +3,13 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import logo from "../../assets/sLogo.png";
-// import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-// import { CgGitFork } from "react-icons/cg";
 import {
-  // AiFillStar,
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineContacts
 } from "react-icons/ai";
-import { GiSkills } from "react-icons/gi"
+import { GiSkills } from "react-icons/gi";
 import { CgFileDocument } from "react-icons/cg";
 import { BsSunFill, BsMoonStarsFill } from "react-icons/bs";
 import { useTheme } from "../../context/ThemeContext";
@@ -26,10 +23,7 @@ function NavBar() {
   const { lang, toggleLang, t } = useLanguage();
 
   useEffect(() => {
-    // `body { overflow-x: hidden }` (see style.css) makes the browser turn
-    // <body> itself into the scrolling element instead of the window, so
-    // window.scrollY stays 0 forever. Read whichever element actually
-    // scrolled so the "sticky" navbar background reliably kicks in.
+    // With `body { overflow-x: hidden }` the body can be the scroller, so check both.
     function scrollHandler() {
       const scrollY =
         window.scrollY ||
