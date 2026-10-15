@@ -6,7 +6,7 @@
 //
 // If you move to a custom domain, change SITE_URL here and nothing else.
 
-const SITE_URL = "https://myportfolio-7s0.pages.dev";
+const SITE_URL = "https://laothomorn-portfolio.site";
 
 const PERSON = {
   name: "Lao Thomorn",

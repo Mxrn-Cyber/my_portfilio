@@ -89,7 +89,7 @@ const Projects = () => {
       key: "MyPortfolioWebsite",
       imgPath: Portfolio,
       ghLink: "https://github.com/Mxrn-Cyber/my_portfilio",
-      demoLink: "myportfolio-7s0.pages.dev",
+      demoLink: "https://laothomorn-portfolio.site/",
     },
   ];
 

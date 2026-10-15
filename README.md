@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://myportfolio-7s0.pages.dev/">
+<a href="https://laothomorn-portfolio.site/">
   <img src="docs/banner.svg" alt="Mxrn Cyber — Lao Thomorn, Full-Stack Web Developer" width="100%" />
 </a>
 
@@ -10,7 +10,7 @@
 
 <br />
 
-<a href="https://myportfolio-7s0.pages.dev/"><img src="https://img.shields.io/badge/LIVE_SITE-VISIT_%E2%86%97-c6ff3d?style=for-the-badge&labelColor=0a0a0a" alt="Live site" /></a>
+<a href="https://laothomorn-portfolio.site/"><img src="https://img.shields.io/badge/LIVE_SITE-VISIT_%E2%86%97-c6ff3d?style=for-the-badge&labelColor=0a0a0a" alt="Live site" /></a>
 <a href="https://github.com/Mxrn-Cyber/my_portfilio/stargazers"><img src="https://img.shields.io/github/stars/Mxrn-Cyber/my_portfilio?style=for-the-badge&color=c6ff3d&labelColor=0a0a0a&logo=github&logoColor=c6ff3d" alt="Stars" /></a>
 <img src="https://img.shields.io/badge/React-18-c6ff3d?style=for-the-badge&labelColor=0a0a0a&logo=react&logoColor=c6ff3d" alt="React 18" />
 <img src="https://img.shields.io/badge/three.js-3D-c6ff3d?style=for-the-badge&labelColor=0a0a0a&logo=threedotjs&logoColor=c6ff3d" alt="three.js" />
@@ -18,7 +18,7 @@
 
 <br /><br />
 
-**[Live demo](https://myportfolio-7s0.pages.dev/)** · **[Features](#-features)** · **[Quick start](#-quick-start)** · **[Customize](#-customize)** · **[Deploy](#-deploy)**
+**[Live demo](https://laothomorn-portfolio.site/)** · **[Features](#-features)** · **[Quick start](#-quick-start)** · **[Customize](#-customize)** · **[Deploy](#-deploy)**
 
 </div>
 

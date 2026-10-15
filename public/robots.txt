@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://myportfolio-7s0.pages.dev/sitemap.xml
+Sitemap: https://laothomorn-portfolio.site/sitemap.xml
