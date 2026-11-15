@@ -61,7 +61,43 @@ const ProjectCard = (props) => {
       />
       <Card.Body className="project-card-body">
         <Card.Title>{props.title}</Card.Title>
-        <Card.Text className="project-card-text">{props.description}</Card.Text>
+
+        {props.problem && (
+          <div className="project-card-ps">
+            <p className="project-card-text">
+              <span className="project-ps-label">{t("projects.problemLabel")}</span>
+              {props.problem}
+            </p>
+            {props.solution && (
+              <p className="project-card-text">
+                <span className="project-ps-label is-solution">
+                  {t("projects.solutionLabel")}
+                </span>
+                {props.solution}
+              </p>
+            )}
+          </div>
+        )}
+
+        {props.stack && (
+          <dl className="project-stack">
+            {["fe", "be", "ops"].map(
+              (g) =>
+                props.stack[g]?.length > 0 && (
+                  <div className="project-stack-row" key={g}>
+                    <dt>{t(`projects.stackGroups.${g}`)}</dt>
+                    <dd>
+                      {props.stack[g].map((tech) => (
+                        <span className="tech-chip" key={tech}>
+                          {tech}
+                        </span>
+                      ))}
+                    </dd>
+                  </div>
+                )
+            )}
+          </dl>
+        )}
 
         <div className="project-card-actions">
           {props.ghLink && (

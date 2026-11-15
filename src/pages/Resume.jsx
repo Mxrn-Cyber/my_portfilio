@@ -9,8 +9,9 @@ import Particle from "../components/Particle";
 import Seo from "../seo/Seo";
 import { useLanguage } from "../context/LanguageContext";
 import pdf from "../assets/Lao-Thomorn-CV.pdf";
+import pdfWorker from "pdfjs-dist/build/pdf.worker.min.js?url";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 const Resume = () => {
   const { t } = useLanguage();

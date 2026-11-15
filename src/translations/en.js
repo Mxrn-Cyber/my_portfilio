@@ -104,69 +104,116 @@ const en = {
     label: "Feed",
     tags: { live: "Live Site", code: "Code", design: "UI/UX Design" },
     heading: { a: "Recent Top", highlight: "Works" },
-    subheading: "Here are a few projects I've worked on recently.",
+    subheading: "Each project shows the problem, how I solved it, and the tech I used.",
     footerNote:
       "Want to see more of my work? Check out my GitHub or any of my social media — thank you!",
     ghButton: "GitHub",
     demoButton: "Demo",
+    problemLabel: "Problem",
+    solutionLabel: "Solution",
+    stackGroups: { fe: "Front-end", be: "Back-end", ops: "Tools" },
+    filters: {
+      all: "All",
+      web: "Web apps",
+      mobile: "Mobile",
+      backend: "APIs",
+      game: "Games",
+      design: "UI/UX",
+    },
     items: {
-      theWalk: {
-        title: "TheWalk",
-        description:
-          "An e-commerce website built during my first semester of Year 3, where users can buy shoes online — similar to other e-commerce platforms.",
+      typing3d: {
+        title: "Typing Games 3D (PEPY)",
+        problem:
+          "My PEPY ICT students needed fun typing practice in both Khmer and English, and it had to run on old lab computers.",
+        solution:
+          "A 3D typing game app with 28 lessons, 5 games and a speed test, a 2D fallback for slow PCs, and live Class Race rooms where the teacher hosts a code and students compete on a leaderboard.",
       },
-      blogger: {
-        title: "Blogger Website Blogs",
-        description:
-          "A blog I built on Blogger to upload assignments for my professors.",
-      },
-      fastapi: {
-        title: "FastAPI Project",
-        description:
-          "A programming-project assignment from Year 2, built with FastAPI for my professor.",
-      },
-      meakutes: {
-        title: "Meakutes Khmer",
-        description:
-          "A website where users can search for places to visit in Cambodia. The UI/UX is done; the build isn't finished yet — I plan to complete it by the end of the semester.",
-      },
-      walkFigma: {
-        title: "TheWalk — Figma UI Concept (First Version)",
-        description:
-          "My Semester 1, Year 3 project at ITE. Our four-person team struggled to stay coordinated, so I changed plans and finished the design on my own.",
-      },
-      firstUiUx: {
-        title: "My First UI/UX Design",
-        description: "My very first Figma project, made while learning Figma.",
-      },
-      teacherAssistant: {
-        title: "Teacher Assistant",
-        description:
-          "A web platform I built with a 5-person team using Vue.js integrated with the Laravel framework — check it out!",
-      },
-      car3d: {
-        title: "Car3D Game",
-        description: "A C++ project adapted from an overseas source.",
-      },
-      kroeungtes: {
-        title: "KroeungTes UI/UX",
-        description:
-          "My Year 4 project for the Mobile Development (Semester 2) course.",
+      edufundkh: {
+        title: "EduFund KH",
+        problem:
+          "Cambodian students struggle to find scholarships that fit them and to plan the full cost of their education.",
+        solution:
+          "A Khmer/English platform to search and match scholarships, track applications and deadlines, and plan tuition costs in Riel or USD. Built to work on slow internet.",
       },
       BookSelling: {
-        title: "ReanPhysic",
-        description:
-          "The Website is a project that I built for my client that he want to create a website for his business. The website is built with React.js and Tailwind CSS, and it is hosted on Claudeflare & Render for Hosting Server.",
+        title: "eTnakRean",
+        problem:
+          "A client wanted to sell physics video lessons and PDF guides to Khmer students one item at a time, with local payment.",
+        solution:
+          "A Khmer/English store with grade filters, KHQR payment through ABA PayWay, files stored in Cloudflare R2 and an Express + MongoDB API.",
+      },
+      meakuteswebsitedemo: {
+        title: "Meakutes Khmer",
+        problem:
+          "Information about places to visit in Cambodia is spread out and hard to find in one place.",
+        solution:
+          "A tourism platform with destinations, news, events, favourites and reviews, plus an admin panel so editors update content without touching code.",
       },
       MyPortfolioWebsite: {
         title: "My Portfolio Website",
-        description:
-          "This is my personal portfolio website that I built to showcase my skills, projects, and experiences. It is built with React.js and Tailwind CSS, and it is hosted on Claudeflare.",
+        problem:
+          "I needed one place to show my work, CV and contact details in both English and Khmer.",
+        solution:
+          "A bilingual React site with light/dark themes, a 3D hero, pre-rendered pages for SEO and auto-deploy from GitHub to Cloudflare.",
       },
-      meakuteswebsitedemo: {
-        title: "Meakutes Website Demo",
-        description:
-          "This is the website i build for promoting Cambodia Tourism in Covid-19 Era.",
+      teacherAssistant: {
+        title: "Teacher Assistant",
+        problem:
+          "A team project to give teachers one web platform for their class work.",
+        solution:
+          "Built with a 5-person team: a Vue.js front-end talking to a Laravel (PHP) back-end.",
+      },
+      theWalk: {
+        title: "TheWalk",
+        problem:
+          "Year 3 project: build a full online shoe store experience as a front-end developer.",
+        solution:
+          "A React store with product pages, cart and login, using a mock API (MirageJS) and JWT so it works without a real server.",
+      },
+      fastapi: {
+        title: "FastAPI Project",
+        problem:
+          "Year 2 assignment: build a clean, structured REST API.",
+        solution:
+          "A FastAPI service with SQLAlchemy models, PostgreSQL, JWT auth and separate dev/UAT/prod settings.",
+      },
+      kroeungtes: {
+        title: "KroeungTes Mobile App",
+        problem:
+          "Year 4 Mobile Development course project.",
+        solution:
+          "Designed the UI in Figma first, then built the Android app in Kotlin with Jetpack Compose.",
+      },
+      car3d: {
+        title: "Car Race Game (C++)",
+        problem:
+          "Computer Graphics class: learn how drawing and game loops work at a low level.",
+        solution:
+          "A 2D car race game in C++ with OpenGL and GLUT, adapted from an open-source project.",
+      },
+      meakutes: {
+        title: "Meakutes Khmer — Figma UI",
+        problem:
+          "Plan the tourism app's screens before writing any code.",
+        solution:
+          "Full UI/UX design in Figma, later used to build the live Meakutes Khmer site.",
+      },
+      walkFigma: {
+        title: "TheWalk — Figma UI Concept",
+        problem:
+          "Our four-person team struggled to stay coordinated on the Year 3 design.",
+        solution:
+          "I changed plans and finished the whole design on my own.",
+      },
+      firstUiUx: {
+        title: "My First UI/UX Design",
+        problem: "I was new to Figma and needed a real project to learn it.",
+        solution: "My very first Figma design, made while learning the tool.",
+      },
+      blogger: {
+        title: "Blogger Website",
+        problem: "I needed a simple place to share assignments with my professors.",
+        solution: "A blog on Blogger where I posted my coursework.",
       },
     },
   },
