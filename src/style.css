@@ -234,9 +234,7 @@ button:focus {
   font-size: 1.05rem !important;
   width: 100%;
   z-index: 1000;
-  background-color: var(--nav-bg) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: var(--bg) !important;
   border-bottom: 1px solid var(--border);
 }
 
@@ -516,11 +514,29 @@ button:focus {
 /* Decorative full-screen particle canvas — must never catch clicks. */
 #tsparticles {
   position: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
+  inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none !important;
+}
+
+.star-field {
+  --star: rgba(255, 255, 255, 0.55);
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 37% 72%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 58% 34%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 81% 61%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 24% 88%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 69% 9%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 93% 27%, var(--star) 50%, transparent 51%),
+    radial-gradient(1px 1px at 47% 52%, var(--star) 50%, transparent 51%);
+  background-size: 420px 420px;
+  opacity: 0.6;
+}
+
+:root:not([data-theme="dark"]) .star-field {
+  display: none;
 }
 
 .home-section {
@@ -693,9 +709,7 @@ button:focus {
 /* Sits on the hero photo, so it needs a border you can actually see and a
    touch of backdrop blur to stay legible over a busy background. */
 .btn-hero-ghost {
-  background: rgba(var(--bg-rgb), 0.45);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(var(--bg-rgb), 0.8);
   border: 1.5px solid var(--text-muted);
   color: var(--text) !important;
 }

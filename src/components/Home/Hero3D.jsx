@@ -38,20 +38,30 @@ const Hero3D = () => {
       window.matchMedia &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    Promise.all([
-      import("three"),
-      import("three/examples/jsm/environments/RoomEnvironment.js"),
-    ])
-      .then(([THREE, { RoomEnvironment }]) => {
+    // Wait until the page has loaded and the browser is idle, so the 3D scene
+    // never competes with the first paint.
+    const whenIdle = (fn) =>
+      "requestIdleCallback" in window
+        ? window.requestIdleCallback(fn, { timeout: 2500 })
+        : setTimeout(fn, 1200);
+    const afterLoad = new Promise((res) =>
+      document.readyState === "complete"
+        ? whenIdle(res)
+        : window.addEventListener("load", () => whenIdle(res), { once: true })
+    );
+
+    afterLoad
+      .then(() => (disposed ? Promise.reject() : import("three")))
+      .then((THREE) => {
         if (disposed) return;
 
         // ---------- renderer / scene / camera ----------
         let renderer;
         try {
           renderer = new THREE.WebGLRenderer({
-            antialias: (window.devicePixelRatio || 1) < 2,
+            antialias: false,
             alpha: true,
-            powerPreference: "high-performance",
+            powerPreference: "low-power",
             // Don't fall back to slow software rendering.
             failIfMajorPerformanceCaveat: true,
           });
@@ -71,17 +81,13 @@ const Hero3D = () => {
           // ignore
         }
         const lite = isLitePerf();
-        renderer.setPixelRatio(lite ? 1 : Math.min(window.devicePixelRatio || 1, 1.25));
+        renderer.setPixelRatio(lite ? 0.75 : 1);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.05;
         renderer.domElement.setAttribute("aria-hidden", "true");
         mount.appendChild(renderer.domElement);
 
         const scene = new THREE.Scene();
-        const pmrem = new THREE.PMREMGenerator(renderer);
-        const envTex = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-        scene.environment = envTex;
+        scene.add(new THREE.HemisphereLight(0xffffff, 0x222222, 1.6));
 
         const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
         camera.position.set(0, 0, 11);
@@ -89,7 +95,7 @@ const Hero3D = () => {
         const key = new THREE.DirectionalLight(0xffffff, 1.4);
         key.position.set(4, 6, 6);
         scene.add(key);
-        const rim = new THREE.PointLight(0xffffff, 30, 30);
+        const rim = new THREE.DirectionalLight(0xffffff, 0.9);
         rim.position.set(-5, -2, 3);
         scene.add(rim);
 
@@ -99,7 +105,7 @@ const Hero3D = () => {
 
         // Two plain accent shapes
         const geos = [
-          new THREE.SphereGeometry(0.4, 32, 32),
+          new THREE.SphereGeometry(0.4, 20, 16),
           new THREE.IcosahedronGeometry(0.45, 0),
         ];
         const layout = [
@@ -108,12 +114,11 @@ const Hero3D = () => {
         ];
 
         const floaters = geos.map((g, i) => {
-          const mat = new THREE.MeshPhysicalMaterial({
+          const mat = new THREE.MeshStandardMaterial({
             color: 0xffffff,
-            metalness: i === 0 ? 0.6 : 0.1,
-            roughness: 0.2,
-            clearcoat: 1,
-            clearcoatRoughness: 0.1,
+            metalness: 0.1,
+            roughness: i === 0 ? 0.25 : 0.4,
+            flatShading: i === 1,
           });
           const m = new THREE.Mesh(g, mat);
           const [x, y, z] = layout[i];
@@ -130,8 +135,8 @@ const Hero3D = () => {
 
         // Hacking tools: laptop with a live terminal, padlock, USB stick, ">_" tile
         const LIME = new THREE.Color("#c6ff3d");
-        const darkMat = new THREE.MeshStandardMaterial({ color: "#1a1a1a", metalness: 0.6, roughness: 0.35 });
-        const metalMat = new THREE.MeshStandardMaterial({ color: "#d9d9d4", metalness: 1, roughness: 0.22 });
+        const darkMat = new THREE.MeshStandardMaterial({ color: "#1a1a1a", metalness: 0.2, roughness: 0.5 });
+        const metalMat = new THREE.MeshStandardMaterial({ color: "#d9d9d4", metalness: 0.3, roughness: 0.3 });
         const limeMat = new THREE.MeshStandardMaterial({ color: LIME, metalness: 0.3, roughness: 0.3 });
         const glowMat = new THREE.MeshBasicMaterial({ color: LIME });
 
@@ -194,9 +199,6 @@ const Hero3D = () => {
         screen.position.set(0, 0.475, 0.027);
         lid.add(lidBox, screen);
         laptop.add(base, keys, pad, lid);
-        const screenLight = new THREE.PointLight(LIME, 6, 3);
-        screenLight.position.set(0, 0.6, 0.4);
-        laptop.add(screenLight);
         laptop.scale.setScalar(0.9);
 
         const lock = new THREE.Group();
@@ -263,7 +265,6 @@ const Hero3D = () => {
           floaters.forEach((m, i) => m.material.color.set(pal[(i + 1) % pal.length]));
           darkMat.color.set(t === "dark" ? "#2a2a2a" : "#161616");
           rim.color.set(pal[0]);
-          renderer.toneMappingExposure = t === "dark" ? 1.15 : 1.0;
           if (!running) renderer.render(scene, camera);
         };
 
@@ -329,8 +330,8 @@ const Hero3D = () => {
             }
           });
 
-          // advance the terminal text ~5 times a second
-          const step = Math.floor(t * 5);
+          // advance the terminal text ~3 times a second
+          const step = Math.floor(t * 3);
           if (step !== termStep) {
             termStep = step;
             drawTerm();
@@ -339,11 +340,11 @@ const Hero3D = () => {
           renderer.render(scene, camera);
         };
 
-        // Cap the frame rate (~45 fps, ~30 in lite mode) to save GPU work.
+        // Cap the frame rate (~30 fps, ~20 in lite mode) to save GPU work.
         let last = 0;
         const loop = (now = 0) => {
           raf = requestAnimationFrame(loop);
-          if (now - last < (lite ? 32 : 22)) return;
+          if (now - last < (lite ? 48 : 32)) return;
           last = now;
           frame();
         };
@@ -393,8 +394,6 @@ const Hero3D = () => {
           });
           termTex.dispose();
           promptTex.dispose();
-          envTex.dispose();
-          pmrem.dispose();
           renderer.dispose();
           if (renderer.domElement.parentNode === mount) {
             mount.removeChild(renderer.domElement);

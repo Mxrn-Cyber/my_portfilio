@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -7,10 +7,12 @@ import {
 } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Skill from "./pages/Skillset";
-import Project from "./pages/Projects";
-import Resume from "./pages/Resume";
-import Contact from "./pages/Contact";
+
+// Other pages load only when visited, so the home page downloads less.
+const Skill = lazy(() => import("./pages/Skillset"));
+const Project = lazy(() => import("./pages/Projects"));
+const Resume = lazy(() => import("./pages/Resume"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -55,6 +57,7 @@ function App() {
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
         <ScrollToTop />
+        <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/skillset" element={<Skill />} />
@@ -63,6 +66,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        </Suspense>
         <Footer />
       </div>
     </Router>
